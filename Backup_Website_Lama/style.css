@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Exo', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    height: 100vh;
+    color: #707070;
+    background: #111;
+    background-size: cover;
+    background-position: top;
+    overflow: hidden;
+}
+
+h1{
+    padding-top: 50px;
+    font-weight: bold;
+}

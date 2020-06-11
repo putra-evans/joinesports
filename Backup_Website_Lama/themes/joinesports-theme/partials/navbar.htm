@@ -1,0 +1,120 @@
+description = "Navigation bar"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+==
+<nav class="navbar navbar-expand-sm fixed-top navbar-second">
+    <div class="container">
+      <ul class="navbar-nav ml-auto">
+          {% if user %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ 'user-profile'|page }}">ACCOUNT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-request="onLogout" data-request-data="redirect: '/login'">SIGN OUT</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="" data-toggle="modal" data-target="#loginForm">LOGIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ 'register'|page }}">REGISTER</a>
+          </li>
+          {% endif %}
+        </ul>
+    </div>  
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="{{ 'home'|page }}"><img src="{{'assets/img/logo/header.png'|theme}}" alt="" width="150px"></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item{{ this.page.baseFileName == 'home' ? ' active' }}">
+            <a class="nav-link" href="{{ 'home'|page }}">HOME</a>
+          </li>
+          <li class="nav-item{{ this.page.baseFileName == 'news' ? ' active' }}">
+            <a class="nav-link" href="{{ 'news'|page }}">NEWS</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            GAMES
+            </a>
+            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ 'pubg'|page }}">PUBG</a>
+              <a class="dropdown-item" href="{{ 'dota'|page }}">DOTA 2</a>
+              <a class="dropdown-item" href="{{ 'ml'|page }}">MOBILE LEGENDS</a>
+              <a class="dropdown-item" href="{{ 'ff'|page }}">FREE FIRE</a>
+              <a class="dropdown-item" href="{{ 'pubgm'|page }}">PUBG MOBILE</a>
+              <a class="dropdown-item" href="{{ 'chess'|page }}">CHESS RUSH</a>
+            </div>
+          </li>
+          <li class="nav-item{{ this.page.baseFileName == 'reward' ? ' active' }}">
+            <a class="nav-link" href="">REWARD</a>
+          </li>
+          <li class="nav-item d-none d-md-block">
+            <a class="nav-link js-scroll-trigger" href="" data-toggle="modal" data-target="#search"><i class="fa fa-search"></i></a>
+          </li>
+          {% if user %}
+          <li class="nav-item" id="hideForm">
+            <a class="nav-link" href="{{ 'user-profile'|page }}">ACCOUNT</a>
+          </li>
+          <li class="nav-item" id="hideForm">
+            <a class="nav-link" data-request="onLogout" data-request-data="redirect: '/login'">SIGN OUT</a>
+          </li>
+          {% else %}
+          <li class="nav-item" id="hideForm">
+            <a class="nav-link" href="" data-toggle="modal" data-target="#loginForm">LOGIN</a>
+          </li>
+          <li class="nav-item" id="hideForm">
+            <a class="nav-link" href="{{ 'register'|page }}">REGISTER</a>
+          </li>
+          {% endif %}
+          <li class="mb-3">
+            <div id="hideForm">
+              <form action="" class="form-inline">
+                <input class="col-md-6 p-2" type="text" placeholder="search anything">
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content login-form">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Sign in to JOINESPORTS</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="fa fa-times"  aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+              <h3>Sign in</h3>
+              {% partial account ~ '::signin' %}
+          </div>
+        </div>
+      </div>
+  </div>
+    <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content login-form">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="fa fa-times"  aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="form-inline d-flex">
+              <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="search anything" style="height:auto">
+              <button type="submit" class="btn btn-primary mx-auto">search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

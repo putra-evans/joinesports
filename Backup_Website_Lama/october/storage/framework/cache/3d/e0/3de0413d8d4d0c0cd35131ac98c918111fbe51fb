@@ -1,0 +1,18 @@
+1570883315a:1:{s:18:"pubg-team-list.htm";a:11:{s:8:"fileName";s:18:"pubg-team-list.htm";s:7:"content";s:261:"title = "pubg-team-list"
+url = "/pubg/team"
+layout = "default"
+is_hidden = 0
+
+[teams]
+results = 0
+sortOrder = "name desc"
+
+[teams teams2]
+results = 0
+sortOrder = "name asc"
+==
+<div class="container top-section">
+    {% component 'teams' %}
+</div>";s:5:"mtime";i:1570030657;s:6:"markup";s:72:"<div class="container top-section">
+    {% component 'teams' %}
+</div>";s:4:"code";N;s:5:"title";s:14:"pubg-team-list";s:3:"url";s:10:"/pubg/team";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:5:"teams";a:2:{s:7:"results";s:1:"0";s:9:"sortOrder";s:9:"name desc";}s:12:"teams teams2";a:2:{s:7:"results";s:1:"0";s:9:"sortOrder";s:8:"name asc";}}}

@@ -1,0 +1,69 @@
+1587982170a:1:{s:10:"footer.htm";a:6:{s:8:"fileName";s:10:"footer.htm";s:7:"content";s:1277:"==
+<footer class="text-white-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <img src="{{'assets/img/logo/header.png'|theme}}" width="60%" class="mb-3">
+          <p>JOINESPORTS merupakan portal media yang menyajikan event,update turnamen, profil tim, match analysis, prediksi, dan masih banyak lagi. Gabung JOINESPORTS sekarang dan dapatkan berbagai benefit!</p>
+        </div>
+        <div class="col-lg-6 ml-auto text-lg-right">
+          <a href="">HOME</a>
+          <a href="">NEWS</a>
+          <a href="">ABOUT</a>
+          <a href="">CONTACT</a>
+          <a href="">PARTNERS</a>
+          <br>
+          <div class="social d-flex justify-content-lg-end">
+            <a href="#" class="mx-2">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="mx-2">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="mx-2">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom d-flex flex-row text-lg-left text-sm-center">
+        <div class="container">
+          <p>Copyright © JOINESPORTS. All Right Reserved</p>
+        </div>
+      </div>
+  </footer>
+";s:5:"mtime";i:1571051683;s:6:"markup";s:1273:"<footer class="text-white-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <img src="{{'assets/img/logo/header.png'|theme}}" width="60%" class="mb-3">
+          <p>JOINESPORTS merupakan portal media yang menyajikan event,update turnamen, profil tim, match analysis, prediksi, dan masih banyak lagi. Gabung JOINESPORTS sekarang dan dapatkan berbagai benefit!</p>
+        </div>
+        <div class="col-lg-6 ml-auto text-lg-right">
+          <a href="">HOME</a>
+          <a href="">NEWS</a>
+          <a href="">ABOUT</a>
+          <a href="">CONTACT</a>
+          <a href="">PARTNERS</a>
+          <br>
+          <div class="social d-flex justify-content-lg-end">
+            <a href="#" class="mx-2">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="mx-2">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="mx-2">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom d-flex flex-row text-lg-left text-sm-center">
+        <div class="container">
+          <p>Copyright © JOINESPORTS. All Right Reserved</p>
+        </div>
+      </div>
+  </footer>";s:4:"code";N;s:17:"_PARSER_ERROR_INI";s:0:"";}}

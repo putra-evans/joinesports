@@ -1,0 +1,12 @@
+title = "news-view"
+url = "/news/:slug"
+layout = "default"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "contact"
+==
+<div class="container top-section">
+{% component 'blogPost' %}
+</div>

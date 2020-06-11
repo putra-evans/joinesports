@@ -1,0 +1,58 @@
+title = "news"
+url = "/news"
+layout = "default"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+==
+<div class="container top-section">
+  <section class="news">
+    <div class="container">
+      <h5 class="mb-3">LATEST NEWS</h5>
+      <div class="row">
+      {% set posts = blogPosts.posts %}
+            {% for post in posts %}
+                <div class="col-lg-4 col-md-6">
+                  <div class="card bg-dark text-white mb-3">
+                    {% if post.featured_images.count %}
+                    {% for image in post.featured_images|slice(0, 1) %}
+                          <img class="card-img" data-src="{{ image.filename }}" src="{{ image.path }}" alt="{{ image.description != null ? image.description : image.filename }}" title="{{ image.title != null ? image.title : post.title }}">
+                    {% endfor %}
+                    {% endif %}
+                    <div class="card-img-overlay d-flex flex-column">
+                      <small class="card-text">{{ post.published_at|date('M d, Y. g:i') }}</small>
+                      <h4 class="card-title mt-auto"><a class="text-white" href="{{ post.url }}">{{ post.title }}</a></h4>
+                    </div>
+                  </div>
+                </div>
+            {% else %}
+                <li class="no-data">{{ blogPosts.noPostsMessage }}</li>
+            {% endfor %}
+        
+        {% if posts.lastPage > 1 %}
+            <ul class="pagination">
+                {% if posts.currentPage > 1 %}
+                    <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+                {% endif %}
+        
+                {% for page in 1..posts.lastPage %}
+                    <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                        <a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): page }) }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+        
+                {% if posts.lastPage > posts.currentPage %}
+                    <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>
