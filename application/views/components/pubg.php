@@ -1,7 +1,7 @@
 <div class="container top-section" style=" margin-top: 120px">
     <div class=" d-flex flex-row mb-2 portal-nav">
         <a class="" href="http://joinesports.net/pubg">
-        <img src="<?php echo base_url('frontend/img/games/pubg.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
+            <img src="<?php echo base_url('frontend/img/games/pubg.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
         <h4 class="font-weight-bold portal-title">GAME PORTAL</h4>
         <div class="portal-nav ml-auto">
             <a href="<?php echo base_url() ?>pubg/player" class="mr-2 ">PLAYERS</a>
@@ -26,14 +26,14 @@
                     <h6 class="text-lg-right text-primary font-weight-bold mt-4">ONGOING TOURNAMENTS</h6>
                     <?php
                     $now = date('Y-m-d');
-                    $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                    $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                     $ambil = $koneksi->query("SELECT * FROM tb_tournament  where tournament_status='mulai' AND tournament_jenis='pubg' LIMIT 3");
                     //
                     while ($pecah = $ambil->fetch_object()) {
                     ?>
                         <a href="<?php echo site_url('pubg/detailtournament/' . $pecah->tournament_id) ?>">
                             <div class="card bg-dark text-white mb-3 game-card" style="background-image:url(<?php echo base_url('frontend/img/placeholder.jpg') ?>); background-size: 100% ;">
-                            <div class="card-img d-flex flex-column" style="margin-top:-25px;margin-left:30px;">
+                                <div class="card-img d-flex flex-column" style="margin-top:-25px;margin-left:30px;">
 
                                     <h5 class="card-title mt-auto"><?php echo $pecah->tournament_nama ?></h5>
                                 </div>
@@ -93,7 +93,7 @@
                     <div class="col-md-6" id="hide">
                         <h6 class="text-primary font-weight-bold">UPCOMING TOURNAMENTS</h6>
                         <?php
-                        $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                        $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_status='segera' AND tournament_jenis='pubg' ORDER BY tournament_tglmulai DESC LIMIT 2");
                         while ($satu = $ambil->fetch_object()) {
                             if (($satu->tournament_status == 'segera') && ($satu->tournament_id != $satu->achievement_idtournament)) { ?>
@@ -114,7 +114,7 @@
                         <h6 class="text-primary font-weight-bold">PAST TOURNAMENTS</h6>
                         <?php
                         $now = date('Y-m-d');
-                        $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                        $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_status='selesai' AND tournament_jenis='pubg'ORDER BY tournament_tglmulai ASC LIMIT 2");
                         while ($satu = $ambil->fetch_object()) {
                             if (($satu->tournament_status == 'selesai') && ($satu->tournament_id == $satu->achievement_idtournament)) { ?>
@@ -135,7 +135,7 @@
                         <h6 class="text-primary font-weight-bold">UPCOMING TOURNAMENTS</h6>
                         <?php
                         $now = date('Y-m-d');
-                        $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                        $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_jenis='pubg' ORDER BY tournament_tglmulai DESC");
                         while ($satu = $ambil->fetch_object()) {
                             if (($satu->tournament_status == 'segera') && ($satu->tournament_id != $satu->achievement_idtournament)) { ?>
@@ -157,7 +157,7 @@
 
                         <?php
                         $now = date('Y-m-d');
-                        $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                        $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_status='selesai' AND tournament_jenis='pubg' ORDER BY tournament_tglmulai ASC");
                         while ($satu = $ambil->fetch_object()) {
                             if (($satu->tournament_status == 'selesai') && ($satu->tournament_id == $satu->achievement_idtournament)) { ?>
@@ -222,7 +222,7 @@
                         <tbody>
                             <?php
                             $no = 0;
-                            $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                            $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                             $ambil = $koneksi->query("SELECT * FROM tb_player where player_cek='yes' AND player_jenis='pubg ' ORDER BY player_tglmasuk ASC LIMIT 3");
                             while ($pecah = $ambil->fetch_object()) {
                                 $no++; ?>
@@ -258,7 +258,7 @@
                         <tbody>
                             <?php
                             $no = 0;
-                            $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                            $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                             $ambil = $koneksi->query("SELECT * FROM tb_tim where tim_cek='yes' AND tim_jenis='pubg' ORDER BY tim_tahunmasuk ASC LIMIT 3");
                             while ($pecah = $ambil->fetch_object()) {
                                 $no++; ?>

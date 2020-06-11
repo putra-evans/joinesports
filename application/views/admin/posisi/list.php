@@ -42,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <tbody>
 
                                     <?php foreach ($posisi as $posisi) :
-                                        $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                                        $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                                         $ambil2 = $koneksi->query("SELECT * FROM tb_tim WHERE tim_id= $posisi->posisi_timid");
                                         $tim = $ambil2->fetch_object(); ?>
                                         <tr>

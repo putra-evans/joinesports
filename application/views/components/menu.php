@@ -109,7 +109,7 @@ error_reporting(0);
                 <?php } else {
                     $regis = $_SESSION['id'];
                     $id = $regis->registrasi_id;
-                    $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                    $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                     $ambil = $koneksi->query("SELECT * FROM tb_registrasi WHERE registrasi_id='$id'");
                     $nmuser = $ambil->fetch_object();
                     $playerpubg = $koneksi->query("SELECT * FROM tb_player LEFT JOIN tb_posisi ON tb_player.player_id=tb_posisi.posisi_playerid WHERE player_registrasi='$id'");

@@ -67,7 +67,7 @@ if (!isset($_SESSION['akun'])) {
             $posisi = ($_POST['posisi_nama']);
             $nama = ($_POST['player_id']);
             $jenis = ($_POST['tim_jenis']);
-            $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+            $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
             $koneksi->query("UPDATE tb_posisi SET posisi_nama='$posisi' WHERE posisi_id=$idposisi");
             echo (" <script>
                 alert('Berhasil Update');

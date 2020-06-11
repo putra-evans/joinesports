@@ -25,7 +25,7 @@ if (!isset($_SESSION['akun'])) {
     <div class="col-lg-12">
         <form class="form-horizontal" action="<?php echo base_url($tim->tim_jenis . '/editteam') ?>" method="post" enctype="multipart/form-data">
             <?php
-            $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+            $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
             $ambil = $regis['nama'];
             $ambil1 = $koneksi->query("SELECT * FROM tb_registrasi WHERE registrasi_username='$ambil'");
             $pecah = $ambil1->fetch_object()

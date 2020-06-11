@@ -1,7 +1,9 @@
 <?php $tim_id = $_SESSION['idtim'];
-$koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+$koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
 $ambil = $koneksi->query("SELECT * FROM tb_tim where tim_id=$tim_id");
-$pecah = $ambil->fetch_object();
+var_dump($tim_id);
+exit;
+$pecah = mysqli_fetch_object($ambil);
 $regis = $_SESSION['id'];
 $id = $regis->registrasi_id;
 ?>
@@ -14,11 +16,12 @@ if (!isset($_SESSION['akun'])) {
     window.location='$pecah->tim_jenis/detailtim/$tim_id';
   </script>");
 }
-//var_dump($_SESSION['akun']);
+// var_dump($_SESSION['akun']);
 if (isset($_SESSION['akun'])) {
     foreach ($player as $players) :
         // echo $id . "<br>";
         // echo $players->player_registrasi;
+        echo $pecah->tim_jenis;
         if ($id == $players->player_registrasi && $pecah->tim_jenis == $players->player_jenis) {
             $cek = "true";
         }
@@ -26,12 +29,10 @@ if (isset($_SESSION['akun'])) {
     if ($cek != "true") {
         echo ("<script>
         alert('Daftar player Terlebi Dahulu');
-        window.location='$pecah->tim_jenis/player';
       </script>");
     }
 }
 ?>
-
 <div class="container top-section register">
     <div class="row">
         <div class="col-lg-12 mb-5">

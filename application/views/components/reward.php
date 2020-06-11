@@ -40,7 +40,7 @@ if (!isset($_SESSION['akun'])) {
                 ?>
                     <div class="col-lg-6" style="text-align: right">
                         <?php
-                        $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                        $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $regis = $_SESSION['id'];
                         $id = $regis->registrasi_id;
                         $idplayer = $koneksi->query("SELECT player_id from tb_player where player_registrasi=$id");

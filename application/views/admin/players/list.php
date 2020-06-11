@@ -51,7 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </thead>
                         <tbody>
                             <?php foreach ($players as $player) :
-                                $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                                $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                                 $ambil2 = $koneksi->query("SELECT * FROM tb_registrasi WHERE registrasi_id= $player->player_registrasi");
                                 $pecah = $ambil2->fetch_object();
                             ?>

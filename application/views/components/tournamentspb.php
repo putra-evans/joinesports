@@ -9,7 +9,7 @@ if (!isset($_SESSION['akun'])) {
 <div class="container top-section" style=" margin-top: 120px">
     <div class=" d-flex flex-row mb-2 portal-nav">
         <a class="" href="http://joinesports.net/pb">
-        <img src="<?php echo base_url('frontend/img/games/pb.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
+            <img src="<?php echo base_url('frontend/img/games/pb.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
         <h4 class="font-weight-bold portal-title">TOURNAMENT</h4>
         <div class="portal-nav ml-auto">
             <a href="<?php echo base_url() ?>pb/player" class="mr-2 ">PLAYERS</a>
@@ -39,15 +39,15 @@ if (!isset($_SESSION['akun'])) {
                     <h6 class="text-lg-right text-primary font-weight-bold mt-3">ONGOING TOURNAMENTS</h6>
                     <?php
                     $now = date('Y-m-d');
-                    $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                    $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                     $ambil = $koneksi->query("SELECT * FROM tb_tournament  where tournament_status='mulai' AND tournament_jenis='pb'");
 
                     while ($pecah = $ambil->fetch_object()) {
                     ?>
                         <a href="<?php echo site_url('pb/detailtournament/' . $pecah->tournament_id) ?>">
-                            
+
                             <div class="card bg-dark text-white mb-3 game-card" style="background-image:url(<?php echo base_url('frontend/img/placeholder.jpg') ?>); background-size: 100% ;">
-                            
+
                                 <div class="card-img d-flex flex-column" style="margin-top:-25px;margin-left:30px;">
 
                                     <h5 class="card-title mt-auto"><?php echo $pecah->tournament_nama ?></h5>
@@ -77,7 +77,7 @@ if (!isset($_SESSION['akun'])) {
             </thead>
             <tbody>
                 <?php
-                $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                 $now = date('Y-m-d');
                 $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_status='segera' AND tournament_jenis='pb' ORDER BY tournament_tglmulai DESC");
                 while ($satu = $ambil->fetch_object()) {
@@ -108,7 +108,7 @@ if (!isset($_SESSION['akun'])) {
 
     <!-- <?php foreach ($tournament as $tournament) : ?>
                     <?php
-                    $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                    $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                     $now = date('Y-m-d');
                     $jml = $koneksi->query("SELECT COUNT(*) AS jumlah FROM tb_daftartournament  LEFT JOIN  tb_tournament on tb_tournament.tournament_id = tb_daftartournament.tournamentid WHERE tb_daftartournament.tournamentid= $tournament->tournament_id");
                     $total = mysqli_fetch_array($jml);

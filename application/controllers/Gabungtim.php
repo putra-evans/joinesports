@@ -23,7 +23,7 @@ class Gabungtim extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($tournament->rules());
         $data['idplayer'] = $tournament->playerid();
-        $data["player"] = $tim->get_by_role1();
+        $data['player'] = $tim->get_by_role1();
         $this->template->load('vhome', 'components/gabungtim', $data);
     }
     public function cadangan()

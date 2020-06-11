@@ -114,7 +114,7 @@
                         <h6 class="text-lg-left text-white font-weight-bold mt-3">Ada berbagai reward menarik yang dapat kamu menangkan</h6>
                         <div class="row">
                             <?php
-                            $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                            $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                             $reward = $koneksi->query("SELECT * FROM tb_reward ORDER BY reward_koin DESC LIMIT 3");
                             $no = 0;
                             while ($pecah = $reward->fetch_object()) {

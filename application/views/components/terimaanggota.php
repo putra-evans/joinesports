@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <?php
-                $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                 $no = 1;
                 foreach ($tim as $tim) :
                     $ambil1 = $koneksi->query("SELECT * FROM tb_request WHERE request_timid=$tim->tim_id");

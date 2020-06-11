@@ -49,7 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <tbody>
 
                                 <?php foreach ($bagans as $bagan) :
-                                    $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                                    $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                                     $ambil2 = $koneksi->query("SELECT * FROM tb_tournament WHERE tournament_id= $bagan->bagan_tournamentid");
                                     $pecah = $ambil2->fetch_object();
                                     $ambil2 = $koneksi->query("SELECT * FROM tb_tim WHERE tim_id= $bagan->bagan_tima");

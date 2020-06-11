@@ -8,7 +8,7 @@ if (!isset($_SESSION['akun'])) {
 }
 
 ?>
-<?php $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database'); ?>
+<?php $koneksi = mysqli_connect('localhost', 'root', '', 'db_join'); ?>
 
 <div class="card bg-black col-lg-12 mb-3" style="margin-top: 100px">
     <div class="container">

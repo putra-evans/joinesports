@@ -3,8 +3,11 @@
         <center>
             <h6 style="color:black;margin-top:5px;margin-bottom:0px "><b>Mitra Kami</b></h6>
             <?php
-            $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+            $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
             $ambil = $koneksi->query("SELECT * FROM tb_sponsor");
+            // var_dump($ambil);
+            // exit;
+
 
             while ($pecah = $ambil->fetch_object()) {
             ?>

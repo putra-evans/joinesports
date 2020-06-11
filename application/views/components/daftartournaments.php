@@ -53,7 +53,7 @@ if (!isset($_SESSION['akun'])) {
             $id = ($_POST['tournament_id']);
             $tim = ($_POST['tim_nama']);
             $nama = ($_POST['player_nama']);
-            $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+            $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
 
             $ambil2 = $koneksi->query("SELECT COUNT(*) AS jumlah FROM tb_player LEFT JOIN tb_tim ON tb_player.player_timid=tb_tim.tim_id where tb_tim.tim_id='$tim'");
             $total = mysqli_fetch_array($ambil2);

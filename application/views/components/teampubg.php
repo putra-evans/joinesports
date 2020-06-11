@@ -9,7 +9,7 @@ if (!isset($_SESSION['akun'])) {
 <div class="container top-section" style=" margin-top: 120px">
     <div class=" d-flex flex-row mb-2 portal-nav">
         <a class="" href="http://joinesports.net/pubg">
-        <img src="<?php echo base_url('frontend/img/games/pubg.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
+            <img src="<?php echo base_url('frontend/img/games/pubg.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
         <h4 class="font-weight-bold portal-title">TEAM LIST</h4>
         <div class="portal-nav ml-auto">
             <a href="<?php echo base_url() ?>pubg/player" class="mr-2 ">PLAYERS</a>
@@ -22,7 +22,7 @@ if (!isset($_SESSION['akun'])) {
     <?php
     $regis = $_SESSION['id'];
     $id = $regis->registrasi_id;
-    $koneksi =     $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+    $koneksi =     $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
 
     $player = $koneksi->query("SELECT * FROM tb_player LEFT JOIN tb_posisi ON tb_player.player_id= tb_posisi.posisi_playerid WHERE player_registrasi='$id' AND player_jenis='pubg'");
     $nmplayer = $player->fetch_object();
@@ -55,8 +55,8 @@ if (!isset($_SESSION['akun'])) {
         <div class="container">
             <div class="row mt-3">
                 <?php
-              foreach ($team as $a) {
-                echo "
+                foreach ($team as $a) {
+                    echo "
                 <div class='col-lg-4'>
                     <a href=" . site_url('pubg/detailtim/' . $a->tim_id) . ">
                         <div class='card bg-dark text-white mb-3' style='height: 100px;'>
@@ -66,16 +66,16 @@ if (!isset($_SESSION['akun'])) {
                                         style='max-height: 50px;'>
                                 </div>
                                 <div class='col-8 col-md-9'>
-                                    <h6>". $a->tim_nama ."</h6>
+                                    <h6>" . $a->tim_nama . "</h6>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 ";
-              }
-              
-            ?>
+                }
+
+                ?>
             </div>
         </div>
     </div>

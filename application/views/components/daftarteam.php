@@ -2,7 +2,7 @@
 
 <?php
 $regis = $_SESSION['akun'];
-$koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+$koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
 $regis = $_SESSION['id'];
 $id = $regis->registrasi_id;
 if (!isset($_SESSION['akun'])) {
