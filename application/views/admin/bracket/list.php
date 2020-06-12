@@ -35,24 +35,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <thead>
                                 <tr style="background-color: #000">
                                     <th>ID Tournament</th>
+                                    <th>Nama Tournament</th>
                                     <th>Gambar</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                <?php foreach ($brackets as $bracket) : ?>
+                                <?php foreach ($bracket as $a) : ?>
                                     <tr>
                                         <td>
-                                            <?php echo "<font color='#000'> $bracket->bracket_tournamentid </font>" ?>
+                                            <?php echo "<font color='#000'> $a->bracket_tournamentid </font>" ?>
                                         </td>
                                         <td>
-                                            <img src="<?php echo base_url('upload/bracket/' . $bracket->bracket_gambar) ?>" width="64" />
+                                            <?php echo "<font color='#000'> $a->tournament_nama </font>" ?>
                                         </td>
-
+                                        <td>
+                                            <img src="<?php echo base_url('upload/bracket/' . $a->bracket_gambar) ?>" width="64" />
+                                        </td>
                                         <td width="80">
-                                            <a href="<?php echo site_url('admin/bracket/edit/' . $bracket->bracket_id) ?>" class="btn btn-small">Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('admin/bracket/delete/' . $bracket->bracket_id) ?>')" href="#!" class="btn btn-small text-danger">Hapus</a>
+                                            <a href="<?php echo site_url('admin/bracket/edit/' . $a->bracket_id) ?>" class="btn btn-small">Edit</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/bracket/delete/' . $a->bracket_id) ?>')" href="#!" class="btn btn-small text-danger">Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

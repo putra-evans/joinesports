@@ -41,6 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </thead>
                         <tbody>
                             <?php foreach ($poins as $poin) :
+                                // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                                 $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                                 $ambil2 = $koneksi->query("SELECT * FROM tb_tim WHERE tim_id= $poin->poin_playertim");
                                 $tim = $ambil2->fetch_object();

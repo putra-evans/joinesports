@@ -84,6 +84,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <td>
                                         <img src="<?php echo base_url('upload/player/' . $registrasi->registrasi_image) ?>" width="64" />
                                     </td>
+                                    <!--  -->
                                     <td width="150">
                                         <a href="<?php echo site_url('admin/registrasi/edit/' . $registrasi->registrasi_id) ?>" class="btn btn-small">Edit</a>
                                         <a onclick="deleteConfirm('<?php echo site_url('admin/registrasi/delete/' . $registrasi->registrasi_id) ?>')" href="#!" class="btn btn-small text-danger"> Hapus</a>

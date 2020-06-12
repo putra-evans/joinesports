@@ -8,8 +8,7 @@ if (!isset($_SESSION['akun'])) {
 }?>
 <div class="container top-section" style=" margin-top: 120px">
     <div class=" d-flex flex-row mb-2 portal-nav">
-        <a class="" href="http://joinesports.net/pb">
-        <img src="<?php echo base_url('frontend/img/games/pb.png') ?>" alt="" height="30px" class="mr-2 mt-1"></a>
+        <!-- <img src="<?php echo base_url('frontend/img/games/pb.png') ?>" alt="" height="30px" class="mr-2 mb-3"> -->
         <h4 class="font-weight-bold portal-title">PLAYER LIST</h4>
         <div class="portal-nav ml-auto">
             <a href="<?php echo base_url() ?>pb/player" class="mr-2 active">PLAYERS</a>
@@ -59,7 +58,7 @@ if (!isset($_SESSION['akun'])) {
                                 <?php if ($player->player_cek == 'yes') { ?>
                                     <img src="<?php echo base_url('frontend/img/centang.png') ?>" style="width: 20px"><?php  } ?></a></td>
                         <td> <?php echo $player->registrasi_nama ?> </td>
-                        <td> <img src="<?php echo base_url('upload/tim/' . $player->tim_image) ?>" style="height:20px" align="right" /></td>
+                        <td> <img src="<?php echo base_url('upload/tim/' . $player->tim_image) ?>" width="40px" height="40px" /></td>
                         <td> <?php echo $player->tim_nama ?></td>
                     </tr>
                 <?php endforeach; ?>

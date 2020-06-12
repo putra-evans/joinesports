@@ -1,0 +1,56 @@
+Revisi Website
+1. Index/home
+	- Font ganti sesuai yg di mockup
+	- Foto background kebesaran ( Dikasih Style Width dan Height ) ok
+	- hapus jarak dibawah gambar logo game dengan news ( Sama dengan Background ) ok
+	- link yt,fb,ig di isi ( Kita Isikan ) ok
+	- warna background di sponsor ganti ke gelap ( #f0f2f7 ) ok 
+	- Kalimat "Gabung Join Esport sekarang..dst" diperbaiki ( Lengkapi )
+	- warna hover "JOIN SEKARANG" ganti dari biru ke putih ( Letakan di button bukan A hreff )
+	
+
+Featured ( align di perbaiki )
+http://joinesports.net/overview/seting/ ( posisi dibuat saja menjadi select )
+Pada bagian Tim ( Posisi Leader yang hanya bisa melakukan pemindahan role player lain ) ( bisa dibuatkan menjadi select )
+
+error 
+- data posisi 
+- poin
+- bagan
+
+looping bagan pada front end gagal ( Kalau dapat score juga di munculkan ) PSG (4) vs (2) LGD 
+pada edit bracket select option masih belum bisa memangil data dari database, tambahkan 1 field nama tournament 
+
+pada table posisi diharuskan untuk menambah jenis game ***
+setelah login pengunaan pangkat harus di pakai. 
+
+
+2. Registrasi 
+   	- Kalimat "Foto registrasi" ganti ke " Foto Profil (Ukuran 1:1)" ( Perbaiki )
+
+3. Game portal
+   	- Posisi logo game dengan teks "GAME PORTAL" di sejajarkan dan dibesarkan fontnya( Seperti Logo Perbesar Font Game Portal )
+	- Logo game tetap ada ketika klik player/team/turnamen ( Logo Game Portal tidak Muncul ) 
+	- Logo game di portal bisa diklik dikasih link menuju portal gamenya ( Logo diselipkan a hreff kembali ke awal )
+	- Background tournamen ganti ke warna gelap ( ok )
+	- ketika tampilan profile player/team , tetap munculkan pilihan player-team-tournament ( Ditambahkan seperti Breadcrumb )
+	- sort A-Z di player list bagian nickname dan name dan team ( Tambahkan ascending dan descending pada tiap FIELD di list player ) 
+	- warna box team list ganti ( ok ) 
+	- logo tampilan di team list dibuat menyesuaikan bentuk ukuran foto (foto berubah bentuk)
+	- nama team di team list di rata tengah dan sesuai kolom (apabila kepanjangan keluar kotak) ( dicoba ukuran 100% )
+	- font team profile ganti sesuai mockup ( Nama Team dilihat alignnya kembali ) 
+
+
+4. Reward
+	- ukuran box reward di besarkan ( dicoba ukuran 100% tambahkan link di foto )
+	- Foto reward dibuat sepenuh kotak dan format JPEG ( dicoba ukuran 100%, tambahkan tipe JPEG|JPG, gambar reward dijadikan background thumbnail )
+	- kalimat "coin left to unlock" ganti ke "left to order" (hapus coin)
+	- harga goldnya apabila dibuat 6 angka jadi keluar scroll di reward ( perbaiki ukuran thumbnail )
+	- ketika edit koin reward, harus memasukkan foto lagi (foto lama dibiarkan saja)( edit foto saat foto tidak diubah, foto menjadi hilang )
+
+yang dikerjakan : 
+-bagan di edit hilang semua 
+-poin di edit malah nambah
+
+CLEAR 
+-foto edit sudah rapi 

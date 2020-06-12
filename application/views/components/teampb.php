@@ -8,8 +8,7 @@ if (!isset($_SESSION['akun'])) {
 } ?>
 <div class="container top-section" style=" margin-top: 120px">
     <div class=" d-flex flex-row mb-2 portal-nav">
-        <a class="" href="http://joinesports.net/pb">
-            <img src="<?php echo base_url('frontend/img/games/pb.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
+        <!-- <img src="<?php echo base_url('frontend/img/games/dota.png') ?>" alt="" height="30px" class="mr-2 mb-3"> -->
         <h4 class="font-weight-bold portal-title">TEAM LIST</h4>
         <div class="portal-nav ml-auto">
             <a href="<?php echo base_url() ?>pb/player" class="mr-2 ">PLAYERS</a>
@@ -22,6 +21,7 @@ if (!isset($_SESSION['akun'])) {
     <?php
     $regis = $_SESSION['id'];
     $id = $regis->registrasi_id;
+    // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
     $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
     $player = $koneksi->query("SELECT * FROM tb_player LEFT JOIN tb_posisi ON tb_player.player_id= tb_posisi.posisi_playerid WHERE player_registrasi='$id' AND player_jenis='pb'");
     $nmplayer = $player->fetch_object();
@@ -49,33 +49,63 @@ if (!isset($_SESSION['akun'])) {
     <a href="<?php echo base_url() ?>daftarteam" class="btn btn-primary btn-block">Daftar Tim</a>
 
 </div> -->
-
-<div class="container mt-2">
+<div class="embed-responsive">
     <div class="card bg-black mb-5" style="overflow-x:auto">
         <div class="container">
             <div class="row mt-3">
-                <?php
-                foreach ($team as $a) {
-                    echo "
-                <div class='col-lg-4'>
-                    <a href=" . site_url('pb/detailtim/' . $a->tim_id) . ">
-                        <div class='card bg-dark text-white mb-3' style='height: 100px;'>
-                            <div class='card-body d-flex align-items-center'>
-                                <div class='col-4 col-md-3 p-1 d-flex'>
-                                    <img src='" . base_url('upload/tim/' . $a->tim_image) . "' class='img-fluid mx-auto'
-                                        style='max-height: 50px;'>
-                                </div>
-                                <div class='col-8 col-md-9'>
-                                    <h6>" . $a->tim_nama . "</h6>
-                                </div>
+                <div class="col-lg-12 d-flex flex-row mb-3">
+                    <small class="mr-3 mt-1">SORT BY</small>
+                    <select class="select-custom" id="selectTeam">
+                        <option value="0">-select-</option>
+                        <option value="1" onclick="myFunction()">A-Z</option>
+                        <option value="2" onclick="myFunction()">Z-A</option>
+                    </select>
+                </div>
+                <div id="awal" class="container">
+                    <?php
+                    echo " <div class='container'>
+                       <div class='row mt-3'>";
+                    foreach ($team as $a) {
+                        echo "
+                    <div class='col-lg-3'>
+                        <a href=" . site_url('pb/detailtim/' . $a->tim_id) . ">
+                        <div class='card bg-dark text-white mb-3 game-card'>
+                        <div class='row' style='margin-top: 10px'>
+                            <div class='col-lg-4' style='margin-left: 10px'>
+                           <div style='background-image:url(" . base_url('upload/tim/' . $a->tim_image) . ");background-size: 100% 100%; width:70px;height: 70px '>
+                           </div>
+                           
+                            </div>
+                            <div  class='col-lg-6' style='padding-top:20px'>
+                                <h5 class='card-title mt-auto'>" . $a->tim_nama
+                            . "</h5>
+                                
                             </div>
                         </div>
-                    </a>
+                    </div>
+                        </a>
+                    </div> ";
+                    }
+                    echo "</div> </div>";
+                    ?>
                 </div>
-                ";
-                }
-
-                ?>
+                <div id="tampilTimPb" class="container" style="display: none">
+                </div>
+                <script>
+                    function myFunction() {
+                        var x = document.getElementById("awal");
+                        var y = document.getElementById("tampilTimPb");
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                            y.style.display = "none";
+                        } else if (y.style.display === "none") {
+                            x.style.display = "none";
+                            y.style.display = "block"
+                        } else {
+                            x.style.display = "none";
+                        }
+                    }
+                </script>
             </div>
         </div>
     </div>

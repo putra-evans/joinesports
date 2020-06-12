@@ -85,7 +85,7 @@
                                     <?php if ($player->player_cek == 'yes') { ?>
                                         <img src="<?php echo base_url('frontend/img/centang.png') ?>" style="width: 20px"><?php  } ?></a></td>
                             <td> <?php echo $player->player_jenis ?> </td>
-                            <td> <img src="<?php echo base_url('upload/tim/' . $player->tim_image) ?>" style="height:20px" align="right" /></td>
+                            <td> <img src="<?php echo base_url('upload/tim/' . $player->tim_image) ?>" style="width: 40px;height: 40px" /></td>
                             <td> <?php echo $player->tim_nama ?></td>
                             <td> <a href="<?php echo base_url('overview/edit/' . $player->player_id) ?>" class="btn btn-primary btn-block" style="padding: 10px">Edit</a></td>
                         </tr>

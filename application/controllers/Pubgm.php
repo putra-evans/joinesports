@@ -146,6 +146,7 @@ class Pubgm extends CI_Controller
         $player = $idplayer->player_id;
         $tim = $idplayer->posisi_timid;
 
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $ambil2 = $koneksi->query("SELECT COUNT(*) AS jumlah FROM tb_posisi LEFT JOIN tb_tim ON tb_posisi.posisi_timid=tb_tim.tim_id where tb_tim.tim_id='$tim'");
         $total = mysqli_fetch_array($ambil2);
@@ -184,6 +185,7 @@ class Pubgm extends CI_Controller
         $idplayer = $request->request_playerid;
         $idtim = $request->request_timid;
         $posisi = $request->request_posisi;
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $koneksi->query("UPDATE tb_player SET player_timid='$idtim',player_posisi='$posisi' WHERE player_id='$idplayer'");
         $koneksi->query("DELETE FROM tb_request WHERE request_id='$id'");

@@ -23,7 +23,7 @@ class Gabungtim extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($tournament->rules());
         $data['idplayer'] = $tournament->playerid();
-        $data['player'] = $tim->get_by_role1();
+        $data["player"] = $tim->get_by_role1();
         $this->template->load('vhome', 'components/gabungtim', $data);
     }
     public function cadangan()
@@ -36,6 +36,7 @@ class Gabungtim extends CI_Controller
         $validation->set_rules($tournament->rules());
         $player = $tournament->playerid();
         $tim_id = $_SESSION['idtim'];
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $ambil = $koneksi->query("SELECT * FROM tb_tim where tim_id=$tim_id");
         $pecah = $ambil->fetch_object();
@@ -48,6 +49,7 @@ class Gabungtim extends CI_Controller
         endforeach;
         $nama = $idplayer;
         $jenis = $pecah->tim_jenis;
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $koneksi->query("INSERT INTO tb_request (request_timid,request_playerid, request_posisi,request_jenis) VALUES ('$id','$nama','$posisi','$jenis')");
         echo (" <script>

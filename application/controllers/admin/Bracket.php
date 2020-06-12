@@ -14,6 +14,12 @@ class Bracket extends CI_Controller
     public function index()
     {
         $data["brackets"] = $this->bracket_model->getAll();
+        $data["bracket"] = $this->bracket_model->tampil();
+        $this->load->view("admin/bracket/list", $data);
+    }
+
+    public function muncul()
+    {
         $this->load->view("admin/bracket/list", $data);
     }
 

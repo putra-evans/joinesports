@@ -70,6 +70,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <?php echo form_error('posisi_nama') ?>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="pangkat" class="col-sm-2 control-label">Pangkat</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control1" name="pangkat" id="">
+                                            <option value="Leader">Leader</option>
+                                            <option value="Leader">Member</option>
+                                        </select>
+                                        <?php echo form_error('pangkat') ?>
+                                    </div>
+                                </div>
 
 
                                 <div class="col-sm-8 col-sm-offset-2" style="margin-bottom: 30px; margin-top: 10px">

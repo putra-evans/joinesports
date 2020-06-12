@@ -89,7 +89,8 @@ class Tim_fmodel extends CI_Model
     }
     public function get_by_role1()
     {
-        return $this->db->query("SELECT * FROM `tb_player`")->result();
+        $query1 = $this->db->query('select * from tb_player');
+        return $query1->result();
     }
     public function getById($id)
     {
@@ -122,6 +123,7 @@ class Tim_fmodel extends CI_Model
         $regis = $_SESSION['id'];
         $id = $regis->registrasi_id;
         $jenis = $post["tim_jenis"];
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $query = $koneksi->query("SELECT player_id FROM tb_player WHERE player_registrasi='$id' AND player_jenis='$jenis'");
         $pecah = $query->fetch_object();

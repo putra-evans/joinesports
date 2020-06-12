@@ -40,6 +40,7 @@ if (!isset($_SESSION['akun'])) {
                 ?>
                     <div class="col-lg-6" style="text-align: right">
                         <?php
+                        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $regis = $_SESSION['id'];
                         $id = $regis->registrasi_id;
@@ -94,7 +95,7 @@ if (!isset($_SESSION['akun'])) {
                                         <tr style="background: url(<?php echo base_url('upload/reward/' . $rewards->reward_image) ?>); background-size: 100% 100%;height: 170px;">
                                             <td align=left valign=bottom>
                                                 <?php echo $rewards->reward_nama ?><br>
-                                                <font style="text-align: right;color:#e0b403;font-size: 10px"> <?php echo $rewards->reward_koin - $total ?> left to order</font>
+                                                <font style="text-align: right;color:#e0b403;font-size: 10px"> <?php echo $rewards->reward_koin - $total ?> coin left to unlock</font>
                                             </td>
 
                                             </td>

@@ -1,7 +1,6 @@
 <div class="container top-section" style=" margin-top: 120px">
     <div class=" d-flex flex-row mb-2 portal-nav">
-        <a class="" href="http://joinesports.net/pubgm">
-            <img src="<?php echo base_url('frontend/img/games/pubgm.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
+        <img src="<?php echo base_url('frontend/img/games/pubgm.png') ?>" alt="" height="30px" class="mr-2 mb-3">
         <h4 class="font-weight-bold portal-title">GAME PORTAL</h4>
         <div class="portal-nav ml-auto">
             <a href="<?php echo base_url() ?>pubgm/player" class="mr-2 ">PLAYERS</a>
@@ -26,15 +25,16 @@
                     <h6 class="text-lg-right text-primary font-weight-bold mt-4">ONGOING TOURNAMENTS</h6>
                     <?php
                     $now = date('Y-m-d');
+                    // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                     $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                     $ambil = $koneksi->query("SELECT * FROM tb_tournament  where tournament_status='mulai' AND tournament_jenis='pubgm' LIMIT 3");
                     //
                     while ($pecah = $ambil->fetch_object()) {
                     ?>
                         <a href="<?php echo site_url('pubgm/detailtournament/' . $pecah->tournament_id) ?>">
-
-                            <div class="card bg-dark text-white mb-3 game-card" style="background-image:url(<?php echo base_url('frontend/img/placeholder.jpg') ?>); background-size: 100% ;">
-                                <div class="card-img d-flex flex-column" style="margin-top:-25px;margin-left:30px;">
+                            <div class="card bg-dark text-white mb-3 game-card">
+                                <img src="<?php echo base_url('frontend/img/placeholder.jpg') ?>" class="card-img">
+                                <div class="card-img-overlay d-flex flex-column">
 
                                     <h5 class="card-title mt-auto"><?php echo $pecah->tournament_nama ?></h5>
                                 </div>
@@ -69,8 +69,8 @@
                                     <div class="card bg-dark text-white mb-3 game-card" style="background-image:url(<?php echo base_url('frontend/img/placeholder.jpg') ?>); background-size: 100% ;">
                                         <a href="<?php echo site_url('pubgm/detailtournament/' . $bagan->bagan_tournamentid) ?>">
                                             <div class="card-img d-flex flex-column" style="margin-top:-15px;margin-left:0px;">
-                                                <h5 class="card-title mt-auto" style="color:white;margin-left:25px"><?php echo $tima->tim_nama ?> VS <?php echo $timb->tim_nama ?></h5>
-                                                <small style="text-align:right;margin-right:25px; color:white;"><?php echo $bagan->bagan_waktu ?></small>
+                                                <h5 class="card-title mt-auto" style="color:white;margin-left:5px"><?php echo $tima->tim_nama ?> VS <?php echo $timb->tim_nama ?></h5>
+                                                <small style="text-align:right;margin-right:5px; color:white;"><?php echo $bagan->bagan_waktu ?></small>
                                             </div>
                                         </a>
                                     </div>
@@ -105,8 +105,8 @@
                                     <div class="card bg-dark text-white mb-3 game-card" style="background-image:url(<?php echo base_url('frontend/img/placeholder.jpg') ?>); background-size: 100% ;">
                                         <a href="<?php echo site_url('pubgm/detailtournament/' . $bagans->bagan_tournamentid) ?>">
                                             <div class="card-img d-flex flex-column" style="margin-top:-15px;margin-left:0px;">
-                                                <h5 class="card-title mt-auto" style="color:white;margin-left:25px"><?php echo $tima->tim_nama ?> VS <?php echo $timb->tim_nama ?></h5>
-                                                <small style="text-align:right;margin-right:25px; color:white;"><?php echo $bagan->bagan_waktu ?></small>
+                                                <h5 class="card-title mt-auto" style="color:white;margin-left:5px"><?php echo $tima->tim_nama ?> VS <?php echo $timb->tim_nama ?></h5>
+                                                <small style="text-align:right;margin-right:5px; color:white;"><?php echo $bagan->bagan_waktu ?></small>
                                             </div>
                                         </a>
                                     </div>
@@ -132,6 +132,7 @@
                     <div class="col-md-6" id="hide">
                         <h6 class="text-primary font-weight-bold">UPCOMING TOURNAMENTS</h6>
                         <?php
+                        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_status='segera' AND tournament_jenis='pubgm' ORDER BY tournament_tglmulai DESC LIMIT 2");
                         while ($satu = $ambil->fetch_object()) {
@@ -139,8 +140,8 @@
                                 <a href="<?php echo site_url('pubgm/detailtournament/' . $satu->tournament_id) ?>">
                                     <div class="card bg-dark text-white mb-3 game-card" style="background-image:url(<?php echo base_url('frontend/img/placeholder.jpg') ?>); background-size: 100% ;">
                                         <div class="card-img d-flex flex-column" style="margin-top:-15px;margin-left:0px;">
-                                            <h5 class="card-title mt-auto" style="color:white;margin-left:25px"><?php echo $satu->tournament_nama ?></h5>
-                                            <small class="card-text" style="text-align:right;margin-right:25px; color:white;"><?php echo $satu->tournament_tglmulai ?></small>
+                                            <h5 class="card-title mt-auto" style="color:white;margin-left:5px"><?php echo $satu->tournament_nama ?></h5>
+                                            <small class="card-text" style="text-align:right;margin-right:5px; color:white;"><?php echo $satu->tournament_tglmulai ?></small>
                                         </div>
                                     </div>
                                 </a>
@@ -152,6 +153,7 @@
                         <h6 class="text-primary font-weight-bold">PAST TOURNAMENTS</h6>
                         <?php
                         $now = date('Y-m-d');
+                        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_status='selesai' AND tournament_jenis='pubgm'ORDER BY tournament_tglmulai ASC LIMIT 2");
                         while ($satu = $ambil->fetch_object()) {
@@ -159,8 +161,8 @@
                                 <a href="<?php echo site_url('pubgm/detailtournament/' . $satu->tournament_id) ?>">
                                     <div class="card bg-dark text-white mb-3 game-card" style="background-image:url(<?php echo base_url('frontend/img/placeholder.jpg') ?>); background-size: 100% ;">
                                         <div class="card-img d-flex flex-column" style="margin-top:-15px;margin-left:0px;">
-                                            <h5 class="card-title mt-auto" style="color:white;margin-left:25px"><?php echo $satu->tournament_nama ?></h5>
-                                            <small class="card-text" style="text-align:right;margin-right:25px; color:white;"><?php echo $satu->tournament_tglmulai ?></small>
+                                            <h5 class="card-title mt-auto" style="color:white;margin-left:5px"><?php echo $satu->tournament_nama ?></h5>
+                                            <small class="card-text" style="text-align:right;margin-right:5px; color:white;"><?php echo $satu->tournament_tglmulai ?></small>
                                         </div>
                                     </div>
                                 </a>
@@ -196,6 +198,7 @@
                         <tbody>
                             <?php
                             $no = 0;
+                            // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                             $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                             $ambil = $koneksi->query("SELECT * FROM tb_player LEFT JOIN  tb_registrasi ON tb_player.player_registrasi= tb_registrasi.registrasi_id where player_cek='yes' AND player_jenis='pubgm ' ORDER BY player_tglmasuk ASC LIMIT 3");
                             while ($pecah = $ambil->fetch_object()) {
@@ -232,6 +235,7 @@
                         <tbody>
                             <?php
                             $no = 0;
+                            // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                             $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                             $ambil = $koneksi->query("SELECT * FROM tb_tim where tim_cek='yes' AND tim_jenis='pubgm' ORDER BY tim_tahunmasuk ASC LIMIT 3");
                             while ($pecah = $ambil->fetch_object()) {

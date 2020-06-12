@@ -9,32 +9,28 @@
   background-color: #111;
   color: #fff;
 }
-
-#mainNav a {
+#mainNav a{
   font-weight: 500;
 }
 
-.navbar-second {
+.navbar-second{
   padding: none;
   height: 30px;
   background-color: #ffcd05;
   color: #111;
 }
 
-.navbar-second a {
+.navbar-second a{
   font-size: 0.8rem;
   color: #111;
-  font-weight: 600;
+  font-weight: 600; 
 }
 
 .navbar-light .navbar-nav .nav-link {
   color: #fff;
 }
 
-.navbar-light .navbar-nav .active>.nav-link,
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav .show>.nav-link {
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
   color: #ffcd05;
 }
 
@@ -61,8 +57,7 @@
   background-color: transparent;
 }
 
-#mainNav .navbar-nav .nav-item:active,
-#mainNav .navbar-nav .nav-item:focus {
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
   outline: none;
   background-color: transparent;
 }
@@ -76,54 +71,44 @@
     -webkit-transition: background-color 0.3s ease-in-out;
     transition: background-color 0.3s ease-in-out;
   }
-
   #mainNav .navbar-brand {
     padding: .5rem 0;
     color: rgba(255, 255, 255, 0.5);
   }
-
   #mainNav .nav-link {
     -webkit-transition: none;
     transition: none;
     padding: 2rem 1.5rem;
     color: rgba(255, 255, 255, 0.7);
   }
-
   #mainNav .nav-link:hover {
     color: rgba(255, 255, 255, 0.75);
   }
-
   #mainNav .nav-link:active {
     color: white;
   }
-
-  #mainNav.navbar-shrink {
+  #mainNav.navbar-shrink  {
     background-color: #111;
   }
-
   #mainNav.navbar-shrink .navbar-brand {
     color: #fff;
   }
-
   #mainNav.navbar-shrink .nav-link {
     color: #fff;
     padding: 1.5rem 1.5rem 1.25rem;
     border-bottom: 0.25rem solid transparent;
   }
-
   #mainNav.navbar-shrink .nav-link:hover {
     color: #ffcd05;
   }
-
   #mainNav.navbar-shrink .nav-link:active {
     color: #ffcd05;
   }
-
   #mainNav.navbar-shrink .nav-link.active {
     color: #ffcd05;
     outline: none;
   }
-
+  
 }
 
 .landing {
@@ -132,89 +117,85 @@
   height: 100vh;
   min-height: 35rem;
   padding-top: 15rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.3)), color-stop(50%, rgba(22, 22, 22, 0.7)), to(#161616)), url("../img/landing-2.jpg");
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 50%, #161616 100%), url("../img/landing-2.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.3)), color-stop(50%, rgba(22, 22, 22, 0.7)), to(#161616)), url("../img/landing.jpg");
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 50%, #161616 100%), url("../img/landing.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
-
-.landing h1 {
+.landing h1{
   font-size: 6vh;
   font-weight: 700;
   color: #fff;
   text-shadow: 2px 2px 4px #000000;
 }
 
-.portal-list {
+.portal-list{
   margin-top: 7rem;
   margin-bottom: 0;
   padding: 10px;
   border-radius: 0.8rem;
 }
 
-.portal-list a img {
+.portal-list a img{
   max-height: 50px;
 }
 
-.portal-nav a {
+.portal-nav a{
   font-weight: 500;
   color: #707070;
 }
 
-.portal-nav .active {
+.portal-nav .active{
   color: #ffcd05;
 }
 
-.news {
+.news{
   padding: 2rem 0;
 }
 
-.top-section {
+.top-section{
   margin-top: 110px;
 }
 
-.news h5 {
+.news h5{
   color: #ffcd05;
   font-weight: 600;
 }
 
-.card-img {
+.card-img{
   max-width: 100%;
   object-fit: cover;
 }
 
-.news .card,
-.news .card-img,
-.news .card-img-overlay {
+.news .card, .news .card-img, .news .card-img-overlay{
   height: 200px;
 }
 
-.card-img-overlay {
+.card-img-overlay{
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616));
   background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%);
 }
 
-.news .card .card-title {
+.news .card .card-title{
   font-weight: 500;
   text-shadow: 2px 2px 4px #000000;
 }
 
-.achievements {
+.achievements{
   background-color: #111;
 }
 
-.achievements h6 {
+.achievements h6{
   font-size: 1.2vw;
 }
 
-.achievements small {
+.achievements small{
   font-size: 1vw;
 }
-
 @media (min-width: 768px) {
-  #hideForm {
+  #hideForm{
     display: none;
   }
 }
@@ -224,12 +205,10 @@
     height: 100vh;
     padding: 0;
   }
-
-  .landing h1 {
+  .landing h1{
     margin-top: 30vh;
   }
-
-  .register {
+  .register{
     width: 50%;
   }
 }
@@ -262,75 +241,69 @@
   background-color: #ffcd05 !important;
 }
 
-@media (max-width: 992px) {
-  .portal-title {
+@media (max-width: 992px){
+  .portal-title{
     display: none;
   }
 
-  .top-section {
+  .top-section{
     margin-top: 120px;
   }
 
-  .achievements h6 {
+  .achievements h6{
     font-size: 1.5vw;
   }
 
-  .achievements small {
+  .achievements small{
     font-size: 1vw;
   }
 }
 
-@media (max-width: 768px) {
-  .navbar-second {
+@media (max-width: 768px){
+  .navbar-second{
     display: none;
   }
-
-  #mainNav {
+  #mainNav{
     margin-top: 0;
   }
-
-  #hideForm {
+  #hideForm{
     display: inline;
   }
-
-  .landing {
+  .landing{
     padding-top: 30vh;
   }
 
-  .portal-list {
+  .portal-list{
     margin-top: 5rem;
   }
-
-  .top-section {
+  .top-section{
     margin-top: 90px;
   }
 
-  .achievements h6,
-  .achievements small {
+  .achievements h6, .achievements small{
     font-size: 2vw;
   }
 
 }
 
-@media (max-width: 600px) {
-  .portal-nav {
+@media (max-width: 600px){
+  .portal-nav{
     font-size: 0.75rem;
     margin-top: 5px;
   }
-
-  .profile-details {
+  .profile-details{
     font-size: 3.5vw;
   }
 }
 
-@media (max-width: 500px) {
-  .landing h1 {
+@media (max-width: 500px){
+  .landing h1{
     font-size: 5vh;
   }
 }
 
-@media (min-width: 1500px) {
-  .landing h1 {
+@media (min-width: 1500px){
+  .landing h1{
     font-size: 5vh;
   }
 }
@@ -363,14 +336,11 @@ body {
   color: #fff;
 }
 
-a,
-.btn-link {
+a, .btn-link {
   color: #ffcd05;
 }
 
-a:focus,
-a:hover,
-.btn-link:hover {
+a:focus, a:hover, .btn-link:hover {
   text-decoration: none;
   color: #e0b403;
 }
@@ -392,16 +362,16 @@ footer {
   padding-top: 2rem;
 }
 
-footer a {
+footer a{
   display: block;
   font-weight: 500;
 }
 
-footer .social {
+footer .social{
   font-size: 2rem;
 }
 
-footer .bottom {
+footer .bottom{
   width: 100%;
   background: #000000;
   margin-top: 1rem;
@@ -409,67 +379,60 @@ footer .bottom {
   font-size: 0.75rem;
 }
 
-.dropdown-menu {
+.dropdown-menu{
   float: left;
   background-color: #ffcd05;
   width: 200px;
 }
 
-.dropdown-menu .dropdown-item:hover {
+.dropdown-menu .dropdown-item:hover{
   background: none;
   color: #707070;
 }
 
-.login-form {
+.login-form{
   margin-top: 25px;
   border-top: 5px solid #ffcd05;
   background-color: #000000b4;
 }
 
-.login-form h5,
-.login-form .close {
+.login-form h5, .login-form .close{
   color: #ffcd05;
   font-weight: 600;
 }
 
-.login-form .modal-footer,
-.login-form .modal-content,
-.login-form .modal-header {
+.login-form .modal-footer, .login-form .modal-content, .login-form .modal-header{
   border: none;
 }
 
-.game-card,
-.game-card .card-img-overlay,
-.game-card .card-img {
+.game-card, .game-card .card-img-overlay, .game-card .card-img{
   height: 90px;
 }
 
-.table-esport {
+.table-esport{
   color: #fff;
-  border-collapse: separate;
+  border-collapse: separate; 
   border-spacing: 0 8px;
 }
 
-.table-esport thead {
+.table-esport thead{
   font-size: 0.75rem;
   color: #707070;
 }
 
-.table-esport tbody tr {
+.table-esport tbody tr{
   font-size: 0.8rem;
   background: #212121;
 }
 
-.table-esport tbody tr:nth-child(even) {
+.table-esport tbody tr:nth-child(even){
   background: #292929;
 }
-
-.table-esport th,
-td {
+.table-esport th, td {
   white-space: nowrap;
 }
 
-.select-custom {
+.select-custom{
   text-transform: uppercase;
   background: #ffcd05;
   color: #000;
@@ -477,31 +440,21 @@ td {
   padding: 0 5px;
 }
 
-option,
-select {
+option, select{
   font-weight: 600;
 }
 
-.nav-tabs {
+.nav-tabs{
   border-bottom: #212121 2px solid;
   margin-bottom: 1rem;
 }
 
-.nav-tabs li {
+.nav-tabs li{
   margin-right: 1.5rem;
   margin-bottom: 0.75rem;
 }
 
-.nav-tabs .active {
+.nav-tabs .active{
   border-bottom: #ffcd05 3px solid;
   padding-bottom: 0.75rem;
-}
-
-.img-custom {
-  width: 100%;
-  height: auto;
-}
-
-hr {
-  border: #ffcd05 solid 1px;
 }

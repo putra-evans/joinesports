@@ -134,6 +134,7 @@ class Overview extends CI_Controller
         $tim = $this->tim_fmodel;
         $validation = $this->form_validation;
         $validation->set_rules($tim->rules());
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $koneksi->query("UPDATE tb_posisi SET posisi_nama='', posisi_timid='' WHERE posisi_id=$id");
         $regis = $_SESSION['id'];
@@ -158,6 +159,7 @@ class Overview extends CI_Controller
         $idplayer = $request->request_playerid;
         $idtim = $request->request_timid;
         $posisi = $request->request_posisi;
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $pecah = $koneksi->query("SELECT *  FROM tb_posisi WHERE posisi_playerid='$idplayer'");
         $ambil = $pecah->fetch_object();
@@ -179,6 +181,7 @@ class Overview extends CI_Controller
         $idplayer = $request->request_playerid;
         $idtim = $request->request_timid;
         $posisi = $request->request_posisi;
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $koneksi->query("DELETE FROM tb_request WHERE request_id='$id'");
         $regis = $_SESSION['id'];

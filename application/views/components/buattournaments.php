@@ -1,4 +1,5 @@
 <?php $tournament_jenis = $_SESSION['jenis'];
+// $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
 $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
 
 ?>

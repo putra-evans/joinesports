@@ -1,7 +1,6 @@
 <div class="container top-section" style=" margin-top: 120px">
     <div class=" d-flex flex-row mb-2 portal-nav">
-        <a class="" href="http://joinesports.net/ff">
-        <img src="<?php echo base_url('frontend/img/games/ff.png') ?>" alt="" height="30px" class="mr-2 mb-3"></a>
+        <!-- <img src="<?php echo base_url('frontend/img/games/dota.png') ?>" alt="" height="30px" class="mr-2 mb-3"> -->
         <h4 class="font-weight-bold portal-title">TEAM LIST</h4>
         <div class="portal-nav ml-auto">
             <a href="<?php echo base_url() ?>ff/player" class="mr-2 ">PLAYERS</a>

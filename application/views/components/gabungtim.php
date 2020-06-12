@@ -1,9 +1,8 @@
 <?php $tim_id = $_SESSION['idtim'];
+// $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
 $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
 $ambil = $koneksi->query("SELECT * FROM tb_tim where tim_id=$tim_id");
-var_dump($tim_id);
-exit;
-$pecah = mysqli_fetch_object($ambil);
+$pecah = $ambil->fetch_object();
 $regis = $_SESSION['id'];
 $id = $regis->registrasi_id;
 ?>
@@ -16,12 +15,11 @@ if (!isset($_SESSION['akun'])) {
     window.location='$pecah->tim_jenis/detailtim/$tim_id';
   </script>");
 }
-// var_dump($_SESSION['akun']);
+//var_dump($_SESSION['akun']);
 if (isset($_SESSION['akun'])) {
     foreach ($player as $players) :
         // echo $id . "<br>";
         // echo $players->player_registrasi;
-        echo $pecah->tim_jenis;
         if ($id == $players->player_registrasi && $pecah->tim_jenis == $players->player_jenis) {
             $cek = "true";
         }
@@ -29,10 +27,12 @@ if (isset($_SESSION['akun'])) {
     if ($cek != "true") {
         echo ("<script>
         alert('Daftar player Terlebi Dahulu');
+        window.location='$pecah->tim_jenis/player';
       </script>");
     }
 }
 ?>
+
 <div class="container top-section register">
     <div class="row">
         <div class="col-lg-12 mb-5">
@@ -104,7 +104,8 @@ if (isset($_SESSION['akun'])) {
             $posisi = ($_POST['posisi_nama']);
             $nama = ($_POST['player_id']);
             $jenis = ($_POST['tim_jenis']);
-            $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+            // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+            $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
             $koneksi->query("INSERT INTO tb_request (request_timid,request_playerid, request_posisi,request_jenis) VALUES ('$id','$nama','$posisi','$jenis')");
             echo (" <script>
                 alert('Tunggu Konfirmasi Leader Tim');

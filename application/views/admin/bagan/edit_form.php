@@ -35,7 +35,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                         <input type="hidden" name="id" value="<?php echo $bagan->bagan_id ?>" />
 
-                        <?php $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
+                        <?php
+                        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                        $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $nmtournament = $koneksi->query("SELECT tournament_nama FROM tb_tournament WHERE tournament_id = $bagan->bagan_tournamentid");
                         $a = $nmtournament->fetch_object();
 

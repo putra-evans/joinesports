@@ -48,49 +48,40 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </thead>
                             <tbody>
 
-                                <?php foreach ($bagans as $bagan) :
-                                    $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
-                                    $ambil2 = $koneksi->query("SELECT * FROM tb_tournament WHERE tournament_id= $bagan->bagan_tournamentid");
-                                    $pecah = $ambil2->fetch_object();
-                                    $ambil2 = $koneksi->query("SELECT * FROM tb_tim WHERE tim_id= $bagan->bagan_tima");
-                                    $tima = $ambil2->fetch_object();
-                                    $ambil2 = $koneksi->query("SELECT * FROM tb_tim WHERE tim_id= $bagan->bagan_timb");
-                                    $timb = $ambil2->fetch_object();
-                                    $ambil2 = $koneksi->query("SELECT * FROM tb_tim WHERE tim_id= $bagan->bagan_menang");
-                                    $menang = $ambil2->fetch_object(); ?>
-
+                                <?php foreach ($bagan as $a) :
+                                ?>
                                     <tr>
                                         <td>
-                                            <?php echo "<font color='#000'> $pecah->tournament_nama </font>" ?>
+                                            <?php echo "<font color='#000'> $a->tournament_nama </font>" ?>
                                         </td>
                                         <td>
-                                            <?php echo "<font color='#000'> $tima->tim_nama </font>" ?>
+                                            <?php echo "<font color='#000'> $a->tima </font>" ?>
                                         </td>
                                         <td>
-                                            <?php echo "<font color='#000'> $timb->tim_nama </font>" ?>
+                                            <?php echo "<font color='#000'> $a->timb </font>" ?>
                                         </td>
                                         <td>
-                                            <?php echo "<font color='#000'> $bagan->bagan_waktu </font>" ?>
+                                            <?php echo "<font color='#000'> $a->bagan_waktu </font>" ?>
                                         </td>
                                         <td>
-                                            <?php echo "<font color='#000'> $bagan->bagan_scorea </font>" ?>
+                                            <?php echo "<font color='#000'> $a->bagan_scorea </font>" ?>
                                         </td>
                                         <td>
-                                            <?php echo "<font color='#000'> $bagan->bagan_scoreb </font>" ?>
+                                            <?php echo "<font color='#000'> $a->bagan_scoreb </font>" ?>
                                         </td>
                                         <td>
-                                            <?php echo "<font color='#000'> $bagan->bagan_babak </font>" ?>
+                                            <?php echo "<font color='#000'> $a->bagan_babak </font>" ?>
                                         </td>
                                         <td>
-                                            <?php echo "<font color='#000'> $menang->tim_nama </font>" ?>
+                                            <?php echo "<font color='#000'> $a->timm </font>" ?>
                                         </td>
                                         <td>
-                                            <?php echo "<font color='#000'> $bagan->bagan_keterangan </font>" ?>
+                                            <?php echo "<font color='#000'> $a->bagan_keterangan </font>" ?>
                                         </td>
 
                                         <td width="150">
-                                            <a href="<?php echo site_url('admin/bagan/edit/' . $bagan->bagan_id) ?>" class="btn btn-small">Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('admin/bagan/delete/' . $bagan->bagan_id) ?>')" href="#!" class="btn btn-small text-danger">Hapus</a>
+                                            <a href="<?php echo site_url('admin/bagan/edit/' . $a->bagan_id) ?>" class="btn btn-small">Edit</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/bagan/delete/' . $a->bagan_id) ?>')" href="#!" class="btn btn-small text-danger">Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

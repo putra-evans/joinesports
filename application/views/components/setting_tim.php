@@ -17,6 +17,7 @@
         $regis = $_SESSION['id'];
         $idr = $regis->registrasi_id;
 
+        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
         $timm = $koneksi->query("SELECT * FROM tb_posisi LEFT JOIN tb_player ON tb_posisi.posisi_playerid=tb_player.player_id LEFT JOIN tb_tim ON tb_posisi.posisi_timid=tb_tim.tim_id WHERE tb_player.player_registrasi=$idr ");
         //foreach ($timm as $tim) : 
@@ -27,7 +28,7 @@
                 <div class="row">
                     <div class="col-lg-6 d-flex flex-column" style="margin-top: 10px;margin-bottom: 10px">
                         <div class="d-flex flex-row" style="margin-top: 10px">
-                            <img src="<?php echo base_url('upload/tim/' . $tim->tim_image) ?>" alt="" style="height:90px" class="">
+                            <img src="<?php echo base_url('upload/tim/' . $tim->tim_image) ?>" alt="" style="height: 100px;width: 100px" class="">
                             <div class="d-flex flex-column ml-4">
                                 <a href="<?php echo base_url($tim->tim_jenis . '/detailtim/' . $tim->tim_id) ?>">
                                     <h4 class="font-weight-bold"><?php echo $tim->tim_nama ?>

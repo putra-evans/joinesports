@@ -128,6 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <label for="name" class="col-sm-2 control-label">Foto</label>
                             <div class="col-sm-9">
                                 <input class="form-control-file <?php echo form_error('registrasi_image') ? 'is-invalid' : '' ?>" type="file" name="registrasi_image" />
+                                <input type="hidden" name="old_image" value="<?php echo $registrasi->registrasi_image ?>" />
                                 <div class="invalid-feedback">
                                 </div>
                                 <?php echo form_error('registrasi_image') ?>

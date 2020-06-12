@@ -2,6 +2,7 @@
 
 <?php
 $regis = $_SESSION['akun'];
+// $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
 $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
 $regis = $_SESSION['id'];
 $id = $regis->registrasi_id;
@@ -22,7 +23,7 @@ if (isset($_SESSION['akun'])) {
     endforeach;
     if ($cek != "true") {
         echo ("<script>
-        alert('Silahkan daftar player terlebih dahulu');
+        alert('Daftar player Terlebi Dahulu');
         window.location='$tim_jenis/player';
       </script>");
     }
@@ -31,7 +32,7 @@ if (isset($_SESSION['akun'])) {
 <div class="container top-section register">
     <div class="row">
         <div class="col-lg-12 mb-5">
-            <h3 class="text-center">DAFTAR TIM JOIN ESPORTS</h3>
+            <h3 class="text-center">DAFTAR TIM JOINESPORTS.</h3>
         </div>
         <div class="col-lg-12">
             <form class="form-horizontal" action="<?php echo site_url('daftarteam') ?>" method="post" enctype="multipart/form-data">
@@ -50,9 +51,6 @@ if (isset($_SESSION['akun'])) {
                         <?php echo form_error('tim_jenis') ?>
                     </div>
                 </div>
-                
-                
-                
                 <div class="form-group">
                     <label>Nama tim</label>
                     <input class="form-control <?php echo form_error('tim_nama') ? 'is-invalid' : '' ?>" type="text" name="tim_nama" />

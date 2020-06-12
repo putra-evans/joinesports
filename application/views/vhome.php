@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <?php include "components/head.php"; ?>
   <style type="text/css">
@@ -385,6 +386,7 @@
           }
         })
       })
+
       $('#Provinsi').change(function() {
         var id = $(this).val();
         $.ajax({
@@ -403,4 +405,5 @@
     })
   </script>
 </body>
+
 </html>

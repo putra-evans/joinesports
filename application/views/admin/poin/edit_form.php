@@ -29,7 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                     <div class="card-body">
                         <div class="tab-pane active" id="horizontal-form">
-                            <form class="form-horizontal" action="<?php echo site_url('admin/poin/add') ?>" method="post">
+                            <form class="form-horizontal" action="<?php echo site_url('admin/poin/edit') ?>" method="post">
 
 
                                 <div class="form-group">

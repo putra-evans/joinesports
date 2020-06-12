@@ -24,6 +24,12 @@ class Bracket_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
+    public function tampil()
+    {
+        return $this->db->query("SELECT * FROM tb_bracket 
+        JOIN tb_tournament ON tb_bracket.bracket_tournamentid = tb_tournament.tournament_id")->result();
+    }
+
     public function getById($id)
     {
         return $this->db->get_where($this->_table, ["bracket_id" => $id])->row();
@@ -72,7 +78,7 @@ class Bracket_model extends CI_Model
         return "default.jpg";
     }
 
-    public function tournamentid() 
+    public function tournamentid()
     {
         $query1 = $this->db->query('SELECT * FROM tb_tournament');
         return $query1->result();

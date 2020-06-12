@@ -71,6 +71,31 @@ class Bagan_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
+    // "SELECT * FROM tb_bagan 
+    // JOIN tb_tournament on tb_bagan.bagan_tournamentid = tb_tournament.tournament_id
+    // JOIN tb_tim b on tb_bagan.bagan_tima = b.tim_id
+
+    public function tampil()
+    {
+        return $this->db->query("SELECT
+                tb_bagan.bagan_id,
+                tb_bagan.bagan_waktu,
+                tb_bagan.bagan_scorea,
+                tb_bagan.bagan_scoreb,
+                tb_bagan.bagan_babak,
+                tb_bagan.bagan_keterangan,
+                tb_tournament.tournament_nama,
+                a.tim_nama as tima,
+                b.tim_nama as timb,
+                c.tim_nama as timm
+                FROM tb_bagan
+                JOIN tb_tournament on tb_bagan.bagan_tournamentid = tb_tournament.tournament_id
+                JOIN tb_tim a on tb_bagan.bagan_tima = a.tim_id 
+                JOIN tb_tim b on tb_bagan.bagan_timb = b.tim_id
+                JOIN tb_tim c on tb_bagan.bagan_menang = c.tim_id
+                ")->result();
+    }
+
     public function getById($id)
     {
         return $this->db->get_where($this->_table, ["bagan_id" => $id])->row();

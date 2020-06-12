@@ -42,10 +42,14 @@ if (!isset($_SESSION['akun'])) {
             </div>
             <div class="form-group">
                 <label>Posisi</label>
-                <input class="form-control <?php echo form_error('posisi_nama') ? 'is-invalid' : '' ?>" type="text" name="posisi_nama" value="<?php echo $posisi->posisi_nama ?>" />
+                <!-- <input class="form-control <?php echo form_error('posisi_nama') ? 'is-invalid' : '' ?>" type="text" name="posisi_nama" value="<?php echo $posisi->posisi_nama ?>" />
                 <div class="invalid-feedback">
-                </div>
+                </div> -->
                 <?php echo form_error('posisi_nama') ?>
+                <select class="form-control name=" posisi_nama" id="">
+                    <option value="Leader">Leader</option>
+                    <option value="Member">Member</option>
+                </select>
             </div>
             <?php $tg = date('yy-m-d'); ?>
 
@@ -67,6 +71,7 @@ if (!isset($_SESSION['akun'])) {
             $posisi = ($_POST['posisi_nama']);
             $nama = ($_POST['player_id']);
             $jenis = ($_POST['tim_jenis']);
+            // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
             $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
             $koneksi->query("UPDATE tb_posisi SET posisi_nama='$posisi' WHERE posisi_id=$idposisi");
             echo (" <script>

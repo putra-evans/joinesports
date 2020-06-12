@@ -75,6 +75,7 @@ if ($players->posisi_timid == '') { ?>
         <div class="container p-4">
             <h6>ACHIEVEMENTS</h6>
             <?php
+            // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
             $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
             $ambil1 = $koneksi->query("SELECT * FROM tb_player LEFT JOIN tb_achievement ON tb_player.player_id=tb_achievement.achievement_idplayer LEFT JOIN tb_tournament ON tb_achievement.achievement_idtournament=tb_tournament.tournament_id where tb_achievement.achievement_idplayer=$player->player_id AND player_id='$players->player_id'");
             if ($ambil1 == 'true') {
@@ -179,6 +180,7 @@ if ($players->posisi_timid != '') { ?>
         <div class="container p-4">
             <h6>ACHIEVEMENTS</h6>
             <?php
+            // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
             $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
             $aciev = $koneksi->query("SELECT * FROM tb_achievement where achievement_idtim=$players->posisi_timid");
             while ($pecah1 = $aciev->fetch_object()) {

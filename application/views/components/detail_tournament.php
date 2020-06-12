@@ -28,12 +28,12 @@ if (!isset($_SESSION['akun'])) {
             </div>
             <div class="text-lg-right">
                 <h4 class="font-weight-bold"><?php echo $tournament->tournament_nama ?></h4>
-                <h6 class="text-secondary">Organized by <?php echo $tournament->tournament_organizer ?></h6>
+                <h6 class="text-secondary">organized by organizer</h6>
             </div>
             <div class="row mt-5">
                 <div class="col-lg-8 d-flex flex-row justify-content-lg-start justify-content-between align-items-end">
                     <div style="margin:10px">
-                        <small class="text-secondary">Prizepool</small>
+                        <small class="text-secondary">Money</small>
                         <h6>IDR. <?php echo $tournament->tournament_prize ?></h6>
                     </div>
                     <div style="margin:10px">
@@ -41,25 +41,26 @@ if (!isset($_SESSION['akun'])) {
                             echo "<small class='text-secondary'>coin</small>";
                             echo "<h6> - </h6>";
                         } else { ?>
-                            <small class='text-secondary'>Coin</small>
+                            <small class='text-secondary'>coin</small>
                             <h6><?php echo $tournament->tournament_prize1 ?></h6>
                         <?php } ?>
                     </div>
                     <div style="margin:10px" class="ml-3">
-                        <small class="text-secondary">Start</small>
+                        <small class="text-secondary">start</small>
                         <h6><?php echo $tournament->tournament_tglmulai ?></h6>
                     </div>
                     <div style="margin:10px" class="ml-3">
-                        <small class="text-secondary">Finish</small>
+                        <small class="text-secondary">finish</small>
                         <h6><?php echo $tournament->tournament_tglakhir ?></h6>
                     </div>
                     <div style="margin:10px" class="ml-3">
-                        <small class="text-secondary">Location</small>
+                        <small class="text-secondary">location</small>
                         <h6><?php echo $tournament->tournament_lokasi ?></h6>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <?php
+                    // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                     $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                     $jml = $koneksi->query("SELECT COUNT(*) AS jumlah FROM tb_daftartournament  LEFT JOIN  tb_tournament on tb_tournament.tournament_id = tb_daftartournament.tournamentid WHERE tb_daftartournament.tournamentid= $tournament->tournament_id");
                     $total = mysqli_fetch_array($jml);
@@ -86,8 +87,9 @@ if (!isset($_SESSION['akun'])) {
         <div class="row flex-row-reverse">
             <div class="col-lg-3 mb-3">
                 <div class="card bg-black p-3">
-                    <small class="text-secondary">Status</small>
+                    <small class="text-secondary">status</small>
                     <?php
+                    // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                     $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                     $jml = $koneksi->query("SELECT COUNT(*) AS jumlah FROM tb_daftartournament  LEFT JOIN  tb_tournament on tb_tournament.tournament_id = tb_daftartournament.tournamentid WHERE tb_daftartournament.tournamentid= $tournament->tournament_id");
                     $total = mysqli_fetch_array($jml);
@@ -97,13 +99,13 @@ if (!isset($_SESSION['akun'])) {
                         <h6 class="text-primary">
                             OPEN FOR REGISTRATION
                         </h6> <?php } ?>
-                    <small class="text-secondary">Entry fee</small>
+                    <small class="text-secondary">entry fee</small>
                     <h6><?php echo $tournament->tournament_fee ?></h6>
-                    <small class="text-secondary">Available slots</small>
+                    <small class="text-secondary">available slots</small>
                     <h6><?php echo "{$total['jumlah']}";  ?>/<?php echo $tournament->tournament_participan ?></h6>
-                    <small class="text-secondary">Region</small>
+                    <small class="text-secondary">region</small>
                     <h6><?php echo $tournament->tournament_region ?></h6>
-                    <small class="text-secondary">Format</small>
+                    <small class="text-secondary">format</small>
                     <h6><?php echo $tournament->tournament_format ?></h6>
                 </div>
             </div>
@@ -126,6 +128,7 @@ if (!isset($_SESSION['akun'])) {
                         <!-- <button class="btn btn-primary" style="margin-bottom: 30px" onclick="myFunction()">SHOW/HIDE PLAYER</button> -->
                         <?php
                         $no = 0;
+                        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                         $ambil = $koneksi->query("SELECT * FROM tb_daftartournament LEFT JOIN tb_tim on tb_daftartournament.daftartournament_idtim=tb_tim.tim_id LEFT JOIN tb_player on tb_daftartournament.daftartournament_idplayer=tb_player.player_id  where tournamentid=$tournament->tournament_id"); ?>
                         <div id="show">
@@ -171,6 +174,7 @@ if (!isset($_SESSION['akun'])) {
                                             echo $pecah->daftartournament_id;
 
                                             $no = 0;
+                                            // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                                             $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                                             $ambil = $koneksi->query("SELECT * FROM tb_daftartournament LEFT JOIN tb_tim on tb_daftartournament.daftartournament_idtim=tb_tim.tim_id LEFT JOIN tb_player on tb_tim.tim_id=tb_player.player_timid  where tournamentid=$tournament->tournament_id AND daftartournament_idtim=$pecah->tim_id ");
                                         ?>
@@ -187,6 +191,7 @@ if (!isset($_SESSION['akun'])) {
                                                         <?php
                                                         }
                                                         $no = 0;
+                                                        // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                                                         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                                                         $ambil = $koneksi->query("SELECT * FROM tb_daftartournament LEFT JOIN tb_tim on tb_daftartournament.daftartournament_idtim=tb_tim.tim_id LEFT JOIN tb_player on tb_daftartournament.daftartournament_idplayer=tb_player.player_id  where tournamentid=$tournament->tournament_id AND daftartournament_idtim=$pecah->tim_id ");
                                                         while ($pecah = $ambil->fetch_object()) {
@@ -340,6 +345,7 @@ if (!isset($_SESSION['akun'])) {
                                 <?php
                                 $regis = $_SESSION['id'];
                                 $id = $regis->registrasi_id;
+                                // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                                 $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                                 $ambil2 = $koneksi->query("SELECT * FROM tb_registrasi WHERE registrasi_id= '$id'");
                                 $pecah = $ambil2->fetch_object(); ?>
@@ -394,6 +400,7 @@ if (!isset($_SESSION['akun'])) {
                                             <div class="w3-section">
                                                 <?php $regis = $_SESSION['id'];
                                                 $id = $regis->registrasi_id;
+                                                // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                                                 $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                                                 $ambil2 = $koneksi->query("SELECT * FROM tb_registrasi WHERE registrasi_id= '$id'");
                                                 $pecah = $ambil2->fetch_object(); ?>

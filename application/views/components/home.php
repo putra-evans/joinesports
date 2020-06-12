@@ -1,13 +1,12 @@
-<header class="landing d-flex flex-column">
-    <div class="container flex-grow-1">
-        <div class="col-lg-6 ml-n3">
-            <h1>JOIN THE BIGGEST ESPORTS COMMUNITY IN INDONESIA</h1>
-            <a href="<?php echo base_url() ?>register" class="btn btn-primary js-scroll-trigger mt-4">JOIN NOW</a>
+<header class="landing" id="home">
+    <div class="container d-flex flex-column justify-content-end">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>JOIN THE BIGGEST ESPORTS COMMUNITY IN INDONESIA</h1><br><br>
+            </div>
+            <div class="col-lg-6">
+            </div>
         </div>
-        <div class="col-lg-6">
-        </div>
-    </div>
-    <div class="container d-flex flex-column mt-auto mb-3">
         <div class="d-flex flex-row bg-black justify-content-around portal-list">
             <div class="p-2">
                 <a href="<?php echo base_url() ?>pb"><img src="<?php echo base_url('frontend/img/games/pb.png') ?>" alt="" class="img-fluid">
@@ -30,6 +29,7 @@
             <div class="p-2">
                 <a href="#"><img src="<?php echo base_url('frontend/img/games/ff.png') ?>" alt="" class="img-fluid"></a>
             </div>
+
         </div>
     </div>
 </header>
@@ -43,6 +43,9 @@
                     <div class="card-img-overlay d-flex flex-column" style="height: 360px; ">
                     </div>
                     <!-- </a> -->
+
+
+
                 </div>
 
                 <div class="col-lg-5">
@@ -52,12 +55,15 @@
                             <div class="row" style="margin-left: 10px">
                                 <div class="col-lg-5" class="card bg-dark text-white mb-3" style="height: 100px; background-image: url(<?php echo base_url('upload/berita/' . $berita->image) ?>); background-size: 100% 100%">
                                     <div class="card-img-overlay d-flex flex-column" style="height: 100%;">
+
                                     </div>
+
                                 </div>
                                 <div class="col-lg-7">
                                     <h6 class="card-title mt-auto" style="margin-bottom:0px;"> <?php echo $berita->berita_judul ?></h6>
                                 </div>
                             </div>
+
                         </a><br>
                     <?php endforeach;  ?>
 
@@ -68,6 +74,7 @@
         <div class=" embed-responsive">
             <div class="row">
                 <?php
+                // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                 $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                 $ambil = $koneksi->query("SELECT * FROM tb_berita order by berita_post ASC LIMIT 6");
                 while ($berita = $ambil->fetch_object()) {  ?>
@@ -101,10 +108,10 @@
                     <div class="text-white mb-5">
                         <center>
                             <div class="d-flex flex-column" style="margin-top: 90px; ">
-                                <h5 class="font-weight-bold">GABUNG JOIN ESPORTS SEKARANG</h5>
-                                <p>Dapatkan reward menarik hanya dengan login harian <br>
-                                    dan menangkan JOIN ESPORTS official Tournament</p>
-                                <a href="<?php echo site_url('register') ?>" class="btn bg-black text-primary btn-block font-weight-bold ">JOIN SEKARANG</a>
+                                <h5 class="font-weight-bold">GABUNG JOIN ESPORT SEKARANG</h5>
+                                <p>Dapatkan Reward Menarik hanya dengan login harian <br>
+                                    dan menagkan JOINESPORTs official Tournamen</p>
+                                <a href="<?php echo site_url('register') ?>" class="btn btn-primary btn-block text-primary font-weight-bold" type="submit" style="background-color: #000000;">JOIN SEKARANG</a>
                             </div>
                         </center>
                     </div>
@@ -114,6 +121,7 @@
                         <h6 class="text-lg-left text-white font-weight-bold mt-3">Ada berbagai reward menarik yang dapat kamu menangkan</h6>
                         <div class="row">
                             <?php
+                            // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                             $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
                             $reward = $koneksi->query("SELECT * FROM tb_reward ORDER BY reward_koin DESC LIMIT 3");
                             $no = 0;
@@ -173,12 +181,9 @@ if (isset($_SESSION['akun'])) {
                             $ambil = $koneksi->query("SELECT * FROM tb_tournament ORDER BY tournament_tglmulai DESC LIMIT 2");
                             while ($pecah = $ambil->fetch_object()) {
                             ?> <a href="<?php echo site_url($pecah->tournament_jenis . '/detailtournament/' . $pecah->tournament_id) ?>">
-
-                                    <div class="card bg-dark text-white mb-3 game-card" style="background-image:url(<?php echo base_url('frontend/img/placeholder.jpg') ?>); background-size: 100% ;">
-                                        <div class="card-img d-flex flex-column" style="margin-top:-15px;margin-left:10px;">
-
-
-
+                                    <div class="card bg-dark text-white mb-2 game-card" style="height:70px;">
+                                        <img src="<?php echo base_url('frontend/img/placeholder.jpg') ?>" class="card-img" style="height:70px;">
+                                        <div class="card-img-overlay d-flex flex-column" style="height: 70px;padding-top: 5px;">
                                             <h4 class="card-title mt-auto"><b><?php echo $pecah->tournament_nama ?></b></h4>
                                             <small class="card-text" style="margin-top: -8px;color:#e0b403"><b><?php echo $pecah->tournament_tglmulai ?></b></small>
                                         </div>
@@ -191,9 +196,9 @@ if (isset($_SESSION['akun'])) {
                         <div class="container">
                             <div class="text-white mb-4">
                                 <div class="d-flex flex-column" style=" margin-top: 50px;">
-                                    <h5 class="font-weight-bold">Daftarkan turnamenmu di JOIN ESPORTS</h5>
+                                    <h5 class="font-weight-bold">Daftarkan Tournamen Mu di JOIN ESPORT</h5>
                                     <p>Dapatkan berbagai benefit dengan mendaftarkan <br>
-                                        Turnamenmu di JOIN ESPORTS</p>
+                                        Tournamen mu di JOIN ESPORT</p>
                                     <!-- <a href="<?php echo base_url() ?>buattournament" class="btn btn-primary btn-block">Daftarkan Tournamen</a> -->
                                 </div>
                             </div>

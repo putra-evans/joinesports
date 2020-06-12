@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label> Foto Profil <i>(Ukuran 1:1)</i></label>
+                    <label>Foto registrasi <i>(Ukuran persegi)</i></label>
                     <input class="form-control-file <?php echo form_error('registrasi_image') ? 'is-invalid' : '' ?>" type="file" name="registrasi_image" />
                     <div class="invalid-feedback">
                     </div>

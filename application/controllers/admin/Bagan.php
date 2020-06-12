@@ -14,8 +14,10 @@ class Bagan extends CI_Controller
     public function index()
     {
         $data["bagans"] = $this->bagan_model->getAll();
+        $data["bagan"] = $this->bagan_model->tampil();
         $this->load->view("admin/bagan/list", $data);
     }
+
 
     public function add()
     {
@@ -45,12 +47,12 @@ class Bagan extends CI_Controller
         //$data["bagan1"] = $bagan->tim();
         $data["bagan"] = $bagan->getById($id);
         if ($validation->run()) {
-            $bagan->update(); 
+            $bagan->update();
             // $this->session->set_flashdata('success', 'Berhasil disimpan');
             redirect(site_url('admin/bagan'));
         }
-        if (!$data["bagan"]) show_404(); 
-         $this->load->view("admin/bagan/edit_form", $data);
+        if (!$data["bagan"]) show_404();
+        $this->load->view("admin/bagan/edit_form", $data);
     }
     public function delete($id = null)
     {

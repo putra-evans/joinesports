@@ -39,8 +39,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <label for="bracket_tournamentid" class="col-sm-2 control-label">Nama Tournament</label>
                         <div class="col-sm-8">
                             <select name="bracket_tournamentid" class="form-control1">
-                                <?php foreach ($bracket1 as $bracket) : ?>
-                                    <option value="<?php echo $bracket->tournament_id ?>"><?php echo $bracket->tournament_nama ?></option>
+                                <?php foreach ($bracket1 as $bracket2) : ?>
+                                    <option value="<?php echo $bracket2->tournament_id ?>"><?php echo $bracket2->tournament_nama ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -51,6 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <label for="name" class="col-sm-2 control-label">Gambar bracket</label>
                         <div class="col-sm-9">
                             <input class="form-control-file <?php echo form_error('bracket_gambar') ? 'is-invalid' : '' ?>" type="file" name="bracket_gambar" />
+                            <input type="hidden" name="old_image" value="<?php echo $bracket->bracket_gambar ?>" />
                             <div class="invalid-feedback">
                             </div>
                             <?php echo form_error('bracket_gambar') ?>
