@@ -49,6 +49,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <tbody>
 
                                 <?php foreach ($bagan as $a) :
+
+
                                 ?>
                                     <tr>
                                         <td>

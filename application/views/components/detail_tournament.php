@@ -137,6 +137,7 @@ if (!isset($_SESSION['akun'])) {
                                     <div class="row">
                                         <?php
                                         while ($pecah = $ambil->fetch_object()) {
+
                                         ?> <div class="col-lg-3">
                                                 <a href="<?php
                                                             echo site_url($pecah->tim_jenis . '/detailtim/' . $pecah->tim_id) ?>">
