@@ -129,6 +129,7 @@ class Pb extends CI_Controller
         $data["bracket"] = $tournament->getBracket($id);
         $data["bagan"] = $tournament->getBagan($id);
         $data["bagans"] = $tournament->getBagan($id);
+        $data["bagansa"] = $tournament->getBagan($id);
 
         if (!$data["tournament"]) show_404();
         $this->template->load('vhome', 'components/detail_tournament', $data);

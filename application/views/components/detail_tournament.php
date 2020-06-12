@@ -119,6 +119,7 @@ if (!isset($_SESSION['akun'])) {
                     <li><a data-toggle="tab" href="#matches">Matches</a></li>
                     <li><a data-toggle="tab" href="#rules">Rules</a></li>
                     <li><a data-toggle="tab" href="#results">Results</a></li>
+                    <li><a data-toggle="tab" href="#winners">Winner</a></li>
                     <li><a data-toggle="tab" href="#forum">Forum</a></li>
                 </ul>
 
@@ -263,12 +264,10 @@ if (!isset($_SESSION['akun'])) {
                                             <td><?php echo $bagan->bagan_waktu ?></td>
                                             <td><?php echo $bagan->bagan_babak ?></td>
                                         </tr>
-
                                 <?php }
                                 endforeach;
                                 ?>
                             </tbody>
-
                         </table>
                     </div>
                     <div id="rules" class="tab-pane fade">
@@ -286,7 +285,6 @@ if (!isset($_SESSION['akun'])) {
                                     <th>Score Tim A</th>
                                     <th>Score Tim B</th>
                                     <th>WINNER</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -315,9 +313,36 @@ if (!isset($_SESSION['akun'])) {
                                 endforeach;
                                 ?>
                             </tbody>
-
                         </table>
                     </div>
+                    <div id="winners" class="tab-pane fade">
+                        <table class="table table-borderless table-esport table-responsive">
+                            <tbody>
+                                <?php
+                                // $sql = $this->db->query("SELECT * FROM tb_achievment WHERE   ")
+                                foreach ($bagansa as $bagan) :
+                                    if ($bagan->bagan_scorea != "") {
+                                        $nmtim = $koneksi->query("SELECT from tb_achievement WHERE tim_id=$bagan->bagan_menang");
+                                        $timmenang = mysqli_fetch_object($nmtim);
+                                ?>
+                                        <tr>
+                                            <td style="color: #e0b403"><a href="<?php echo site_url('pb/detailtim/' . $bagan->bagan_tima) ?>"><?php echo $tima->tim_nama ?></a></td>
+                                            <td>VS</td>
+                                            <td><?php echo $bagan->bagan_waktu ?></td>
+                                            <td><?php echo $bagan->bagan_scorea ?></td>
+                                            <td style="color: #e0b403"><a href="<?php echo site_url('pb/detailtim/' . $bagan->bagan_menang) ?>"><?php echo $timmenang->tim_nama ?></a></td>
+                                        </tr>
+                                <?php }
+                                endforeach;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+
                     <div id="bracket" class="tab-pane fade">
                         <?php if (!empty($bracket)) { ?>
                             <table class="table-responsive">
