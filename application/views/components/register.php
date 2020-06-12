@@ -4,11 +4,15 @@
             <h3 class="text-center">Sign up to JOINESPORTS.</h3>
         </div>
         <div class="col-lg-12">
-            <?php if ($this->session->flashdata('success')) : ?>
+            <?php if ($this->session->flashdata('success')) { ?>
                 <div class="alert alert-success" role="alert">
                     <?php echo $this->session->flashdata('success'); ?>
                 </div>
-            <?php endif; ?>
+            <?php } elseif ($this->session->flashdata('danger')) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $this->session->flashdata('danger'); ?>
+                </div>
+            <?php } ?>
             <form class="form-horizontal" action="<?php echo site_url('register') ?>" method="post" enctype="multipart/form-data">
 
                 <div class="form-group">
@@ -76,7 +80,7 @@
                     <div class="invalid-feedback">
                         <?php echo form_error('registrasi_fb') ?>
                     </div>
-                </div> 
+                </div>
                 <div class="form-group">
                     <label>Youtube</label>
                     <input class="form-control <?php echo form_error('registrasi_yt') ? 'is-invalid' : '' ?>" type="text" name="registrasi_yt" />
