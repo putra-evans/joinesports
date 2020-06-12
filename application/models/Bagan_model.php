@@ -85,9 +85,12 @@ class Bagan_model extends CI_Model
                 tb_bagan.bagan_babak,
                 tb_bagan.bagan_keterangan,
                 tb_tournament.tournament_nama,
+
                 a.tim_nama as tima,
                 b.tim_nama as timb,
                 c.tim_nama as timm
+
+                
                 FROM tb_bagan
                 LEFT JOIN tb_tournament on tb_bagan.bagan_tournamentid = tb_tournament.tournament_id
                 LEFT JOIN tb_tim a on tb_bagan.bagan_tima = a.tim_id 

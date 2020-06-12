@@ -18,8 +18,14 @@ class Register extends CI_Controller
         $data["pulau"] = $registrasi->pulau();
 
         if ($validation->run()) {
-            $registrasi->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $data = $this->db->get_where('tb_registrasi', ['registrasi_username' => $_POST['registrasi_username']])->row_array();
+            if ($data['registrasi_username'] == TRUE) {
+                $this->session->set_flashdata('danger', 'Username Telah Ada');
+                redirect('register');
+            } else {
+                $registrasi->save();
+                $this->session->set_flashdata('success', 'Berhasil disimpan');
+            }
         }
 
         $this->template->load('vhome', 'components/register', $data);
