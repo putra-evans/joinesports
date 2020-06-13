@@ -21,14 +21,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <h3>
                 <center>Data Tournament</center>
             </h3> <br>
-
-            <div class="card-header" style="margin-left: 30px">
-                <a class="btn btn-info" style="width: 150px" href="<?php echo site_url('admin/tournament/add') ?>"> <i class="glyphicon glyphicon-plus"></i> Add New</a>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="col-md-4">
+                        <div class="card-header" style="margin-left: 30px">
+                            <a class="btn btn-info" style="width: 150px" href="<?php echo site_url('admin/tournament/add') ?>"> <i class="glyphicon glyphicon-plus"></i> Add New</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-header">
+                            <table class="table-bordered">
+                                <tr>
+                                    <td>
+                                        <select class="btn btn-info" name="game1" id="game1">
+                                            <option value="">--Silahkan Pilih--</option>
+                                            <option value="pb">POINT BLANK</option>
+                                            <option value="ml">MOBILE LEGEND</option>
+                                            <option value="pubgmobile">PUBG MOBILE</option>
+                                            <option value="pubg">PUBG</option>
+                                            <option value="dota">DOTA</option>
+                                            <option value="ff">FREE FIRE</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-
             <div class="panel-body no-padding">
                 <div class="table-responsive">
-                    <table class="table table-striped" id="datatables">
+                    <table class="table table-striped">
                         <thead>
                             <tr style="background-color: #000">
                                 <th>Jenis</th>
@@ -50,64 +73,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php foreach ($tournaments as $tournament) : ?>
-                                <tr>
-                                    <td>
-                                        <?php echo "<font color='#000'>$tournament->tournament_jenis </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_nama</font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_status</font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_tglmulai </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_tglakhir </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'>$tournament->tournament_participan </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_mode </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_lokasi </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'>$tournament->tournament_rules </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_prize </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_prize1 </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_fee </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_region </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_format </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'> $tournament->tournament_organizer </font>" ?>
-                                    </td>
-                                    <td>
-                                        <?php echo "<font color='#000'>$tournament->tournament_detail </font>" ?>
-                                    </td>
-                                    <td width="150">
-                                        <a href="<?php echo site_url('admin/tournament/edit/' . $tournament->tournament_id) ?>" class="btn btn-small">Edit</a>
-                                        <a onclick="deleteConfirm('<?php echo site_url('admin/tournament/delete/' . $tournament->tournament_id) ?>')" href="#!" class="btn btn-small text-danger">Hapus</a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-
+                        <tbody id="game">
                         </tbody>
                     </table>
                 </div>
@@ -133,9 +99,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <script src="<?php echo base_url('assets/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/dataTables.bootstrap.min.js') ?>"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(function() {
             $("#datatables").DataTable();
+        });
+    </script> -->
+
+    <script>
+        $("#game1").change(function() {
+            var game1 = $('#game1').val();
+            $.ajax({
+                url: "<?= base_url('tampilApi') ?>",
+                type: 'POST',
+                data: {
+                    'game': game1
+                },
+                dataType: 'HTML',
+                success: function(data) {
+                    $('#game').html(data)
+                }
+            });
         });
     </script>
 

@@ -9,6 +9,7 @@ class Login extends CI_Controller
 
     function index()
     {
+        // check_already_login();
         $is_login = $this->session->userdata("status");
         if ($is_login == NULL) {
             $this->load->view('admin/login');
@@ -31,7 +32,6 @@ class Login extends CI_Controller
                 'nama' => $username,
                 'status' => true
             );
-            // $_SESSION['akun'] = $data_session;
             $this->session->set_userdata($data_session);
 
             redirect(base_url('admin/overview'));
@@ -46,8 +46,10 @@ class Login extends CI_Controller
 
     function logout()
     {
-        $this->session->unset_userdata('nama', 'status');
-        session_destroy();
+
+        $params = array('nama', 'status');
+        $this->session->unset_userdata($params);
+        // session_destroy();
         redirect('login');
     }
 }

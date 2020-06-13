@@ -74,3 +74,4 @@ $route['bagan'] = 'admin/bagan';
 $route['klaim'] = 'admin/klaim';
 $route['posisi'] = 'admin/posisi';
 $route['komentar'] = 'admin/komentar';
+$route['tampilApi']['post'] = 'admin/Tournament/load_game';

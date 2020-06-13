@@ -17,6 +17,8 @@ class Daftartournament extends CI_Controller
         $this->load->view("admin/daftartournament/list", $data);
     }
 
+
+
     public function add()
     {
         $daftartournament = $this->daftartournament_model;

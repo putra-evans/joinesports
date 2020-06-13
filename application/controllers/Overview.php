@@ -22,10 +22,16 @@ class Overview extends CI_Controller
     public function index()
     {
         // ambil data klaim si pengguna hari ini
-        $datas['klaim'] = $this->klaim->cek_status_klaim();
-        $datas["berital"] = $this->berita_model->get_all_limit();
-        $datas["beritas"] = $this->berita_model->getAll();
-        $this->template->load('vhome', 'components/home', $datas);
+        $is_login = $this->session->userdata("status");
+        if ($is_login != NULL) {
+
+            redirect('admin');
+        } else {
+            $datas['klaim'] = $this->klaim->cek_status_klaim();
+            $datas["berital"] = $this->berita_model->get_all_limit();
+            $datas["beritas"] = $this->berita_model->getAll();
+            $this->template->load('vhome', 'components/home', $datas);
+        }
     }
     public function aksi_klaim()
     {

@@ -16,7 +16,72 @@ class Tournament extends CI_Controller
         $data["tournaments"] = $this->tournament_model->getAll();
         $this->load->view("admin/tournament/list", $data);
     }
+    public function load_game()
+    {
+        $game = $_POST['game'];
+        $data = $this->db->query("SELECT * FROM `tb_tournament` WHERE `tournament_jenis` = '$game'")->result();
 
+        // $data = $this->db->get_where('tb_tournament', ['tournament_jenis' => $game])->result();
+        foreach ($data as $tournament) {
+            echo "
+                <tr>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_jenis . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_nama . "</font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_status . "</font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_tglmulai . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_tglakhir . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_participan . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_mode . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_lokasi . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_rules . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_prize . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_prize1 . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_fee . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_region . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_format . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_organizer . " </font>
+                    </td>
+                    <td>
+                        <font color='#000'>" . $tournament->tournament_detail . " </font>
+                    </td>
+                    <td width='150'>
+                        <a href='<?php echo site_url('admin/tournament/edit/'" . $tournament->tournament_id . ") ?>' class='btn btn-small'>Edit</a>
+                        <a onclick='deleteConfirm('<?php echo site_url('admin/tournament/delete/' " . $tournament->tournament_id . ") ?>')' href='#!' class='btn btn-small text-danger'>Hapus</a>
+                    </td>
+                </tr>
+            
+            ";
+        }
+    }
     public function add()
     {
         $tournament = $this->tournament_model;
