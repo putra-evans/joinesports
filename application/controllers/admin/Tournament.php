@@ -73,12 +73,14 @@ class Tournament extends CI_Controller
                     <td>
                         <font color='#000'>" . $tournament->tournament_detail . " </font>
                     </td>
-                    <td width='150'>
-                        <a href='<?php echo site_url('admin/tournament/edit/'" . $tournament->tournament_id . ") ?>' class='btn btn-small'>Edit</a>
-                        <a onclick='deleteConfirm('<?php echo site_url('admin/tournament/delete/' " . $tournament->tournament_id . ") ?>')' href='#!' class='btn btn-small text-danger'>Hapus</a>
+                    <td width='150'>";
+?>
+            <a href="<?= site_url('admin/tournament/edit/' . $tournament->tournament_id) ?>" class='btn btn-small'>Edit</a>
+            <a onclick="deleteConfirm(' <?= site_url('admin/tournament/delete/' . $tournament->tournament_id) ?>')" href='#!' class='btn btn-small text-danger'>Hapus</a>
+<?php
+            echo "
                     </td>
                 </tr>
-            
             ";
         }
     }

@@ -63,6 +63,18 @@ class Bagan extends CI_Controller
         }
     }
 
+    public function ApiGame()
+    {
+        $id = $_POST['pb'];
+        $data = $this->db->query("SELECT * FROM tb_tournament WHERE tournament_jenis='$id'")->result();
+
+        echo "<option value=''>-PILIH TOURNAMENT-</option>";
+        foreach ($data as $a) {
+            echo "
+                <option value=" . $a->tournament_id . ">" . $a->tournament_nama . "</option>
+            ";
+        }
+    }
     public function ApiTim()
     {
         $id = $_POST['tournamentid'];

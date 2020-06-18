@@ -155,14 +155,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <?php endforeach ?>
                                         </select>
                                     </div>
+                                </div>
 
-                                    <div class="col-sm-9" style="margin-left: 178px">
+                                <div class="form-group">
+                                    <div class="col-sm-9" style="margin-left: 205px">
                                         <select name="combo_provinsi" id="combo_provinsi" class="form-control1">
                                             <option value="">-PILIH PROVINSI-</option>
                                         </select>
                                     </div>
+                                </div>
 
-                                    <div class="col-sm-9" style="margin-left: 178px">
+                                <div class="form-group">
+                                    <div class="col-sm-9" style="margin-left: 205px">
                                         <select name="tournament_lokasi" id="tournament_lokasi" class="form-control1">
                                             <option value="">-PILIH KOTA-</option>
                                         </select>

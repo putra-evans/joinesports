@@ -65,18 +65,22 @@ if (!isset($_SESSION['akun'])) {
                     $jml = $koneksi->query("SELECT COUNT(*) AS jumlah FROM tb_daftartournament  LEFT JOIN  tb_tournament on tb_tournament.tournament_id = tb_daftartournament.tournamentid WHERE tb_daftartournament.tournamentid= $tournament->tournament_id");
                     $total = mysqli_fetch_array($jml);
                     $now = date('Y-m-d');
+                    // $team  = $_SESSION['team'];
                     $regis = $_SESSION['id'];
                     $id = $regis->registrasi_id;
+                    // $id2 = $team->tim_id;    
                     $cek = $koneksi->query("SELECT * FROM tb_tim LEFT JOIN tb_daftartournament ON tb_tim.tim_id=tb_daftartournament.daftartournament_idtim WHERE tim_registrasi=$id AND tournamentid=$tournament->tournament_id");
-
+                    // 
+                    $idT = $_SESSION['idT'];
+                    $cekTim = $this->db->query("SELECT COUNT(daftartournament_idtim) as hasil, 	daftartournament_id as idTur FROM tb_daftartournament WHERE daftartournament_idtim='$idT' AND tournamentid='$tournament->tournament_id'")->row_array();
                     if ($tournament->tournament_participan == $total['jumlah']) { ?>
                         <a href="#" class="btn btn-primary btn-block">FULL TOURNAMENT</a>
-                    <?php } else { ?>
+                    <?php } elseif ($cekTim['hasil'] != 1) { ?>
 
                         <a href="<?php echo base_url($tournament->tournament_jenis . "/daftartournaments/" . $tournament->tournament_id) ?>" class="btn btn-primary btn-block">JOIN TOURNAMENT</a>
-                    <?php }
-                    ?>
-
+                    <?php } else { ?>
+                        <a href="<?php echo base_url('Pb/keluarGrub/' . $cekTim['idTur']) ?>" class="btn btn-primary btn-block">LEAVE</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -138,15 +142,14 @@ if (!isset($_SESSION['akun'])) {
                                     <div class="row">
                                         <?php
                                         while ($pecah = $ambil->fetch_object()) {
-
                                         ?> <div class="col-lg-3">
                                                 <a href="<?php
                                                             echo site_url($pecah->tim_jenis . '/detailtim/' . $pecah->tim_id) ?>">
-                                                    <div class="card bg-black text-white mb-3" style=" height: 200px; width: 200px">
+                                                    <div class="card bg-black text-white mb-3" style="border-color: white; height: 200px; width: 200px">
                                                         <table style="height: 200px">
                                                             <tr>
-                                                                <td>
-                                                                    <img src="<?php echo base_url('upload/tim/' . $pecah->tim_image) ?>" alt="" style="width: 180px;height: 110px; margin-left: 10px">
+                                                                <td style="border-color: white;">
+                                                                    <img class="img-fluid" src="<?php echo base_url('upload/tim/' . $pecah->tim_image) ?>" alt="" style="width: 180px;height: 200px; margin-left: 10px">
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -158,10 +161,10 @@ if (!isset($_SESSION['akun'])) {
                                                     </div>
                                                 </a>
                                             </div>
+
                                         <?php
                                         }
-                                        ?>
-
+                                        ?><br><br><br>
                                     </div>
                                 </div>
                             </div>
@@ -231,9 +234,7 @@ if (!isset($_SESSION['akun'])) {
                                 }
                             }
                         </script>
-
                     </div>
-
                     <div id="details" class="tab-pane fade">
                         <p><?php echo $tournament->tournament_detail ?></p>
                     </div>
@@ -319,30 +320,37 @@ if (!isset($_SESSION['akun'])) {
                         <table class="table table-borderless table-esport table-responsive">
                             <tbody>
                                 <?php
-                                // $sql = $this->db->query("SELECT * FROM tb_achievment WHERE   ")
-                                foreach ($bagansa as $bagan) :
-                                    if ($bagan->bagan_scorea != "") {
-                                        $nmtim = $koneksi->query("SELECT from tb_achievement WHERE tim_id=$bagan->bagan_menang");
-                                        $timmenang = mysqli_fetch_object($nmtim);
+                                // $sql = $this->db->query("SELECT * FROM tb_achievment WHERE bagan_babak = 'final'");
+
+                                // $nmtim = $koneksi->query("SELECT from tb_achievement WHERE tim_id=$bagansa->bagan_menang LIMIT 1 ");
+                                // var_dump($bagansa1);
+                                // exit;
+                                // echo "SELECT * FROM tb_bagan WHERE tim_id=$bagan->bagan_menang AND bagan_babak = 'final' AND bagan_tournamentid = $bagan->bagan_tournamentid LIMIT 1";
+                                // foreach ($bagansa1 as $bagan) :
+                                // if ($bagan->bagan_scorea != "") {
+                                // $nmtim = $koneksi->query("SELECT from tb_achievement WHERE tim_id=$bagan->bagan_menang LIMIT 1 ");
+                                // var_dump($bagan);
+                                // exit;
+                                // echo "SELECT * FROM tb_achievement WHERE tim_id=$bagan->bagan_menang AND bagan_babak = 'final' AND bagan_tournamentid = $bagan->bagan_tournamentid LIMIT 1";
+
+                                // $timmenang = mysqli_fetch_object($nmtim);
+                                // var_dump($bagansa1);
+                                //var_dump($bagansa1);
+                                // echo json_encode($bagansa1[0]->tim_nama);
                                 ?>
-                                        <tr>
-                                            <td style="color: #e0b403"><a href="<?php echo site_url('pb/detailtim/' . $bagan->bagan_tima) ?>"><?php echo $tima->tim_nama ?></a></td>
-                                            <td>VS</td>
-                                            <td><?php echo $bagan->bagan_waktu ?></td>
-                                            <td><?php echo $bagan->bagan_scorea ?></td>
-                                            <td style="color: #e0b403"><a href="<?php echo site_url('pb/detailtim/' . $bagan->bagan_menang) ?>"><?php echo $timmenang->tim_nama ?></a></td>
-                                        </tr>
-                                <?php }
-                                endforeach;
+                                <tr>
+                                    <td style="text-align: center; color: #e0b403; font-size: 20px;"><a href="<?php echo site_url('pb/detailtim/' . $bagansa1[0]->bagan_menang) ?>"><?php echo $bagansa1[0]->tim_nama ?></a><br><br><br><?php echo $bagansa1[0]->bagan_waktu ?></td>
+                                    <!-- <td>VS</td> -->
+                                    <td style=" text-align: center;color:#e0b403">
+                                        <img src="<?php echo base_url('upload/tim/' . $bagansa1[0]->tim_image) ?>" width="250px"> </td>
+
+                                    <!-- <td style="color: #e0b403"><a href="<?php echo site_url('pb/detailtim/' . $bagansa1->bagan_menang) ?>"></a></td> -->
+                                </tr>
+                                <?php
                                 ?>
                             </tbody>
                         </table>
                     </div>
-
-
-
-
-
                     <div id="bracket" class="tab-pane fade">
                         <?php if (!empty($bracket)) { ?>
                             <table class="table-responsive">
@@ -383,7 +391,6 @@ if (!isset($_SESSION['akun'])) {
 		height: 80px;"></textarea>
                                 </div>
                                 <button class="w3-button w3-block w3-amber w3-section w3-padding" type="submit">Kirim </button>
-
                             </form>
                         </div>
                         <?php
@@ -392,7 +399,6 @@ if (!isset($_SESSION['akun'])) {
                         ?>
                             <div class="container">
                                 <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-amber">
-
                                     <h4> <u><b><?php echo $utama->komentar_nama ?></u></b></h4>
                                     <!-- <small style="margin:0px"><?php echo $utama->komentar_waktu ?></small> -->
                                     <p><?php echo $utama->komentar_isi ?></p>
@@ -410,7 +416,6 @@ if (!isset($_SESSION['akun'])) {
                                         <h4> <u><b><?php echo $balasan->komentar_nama ?></u></b></h4>
                                         <!-- <small style="margin:0px"><?php echo $utama->komentar_waktu ?></small> -->
                                         <p><?php echo $balasan->komentar_isi ?></p>
-
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -444,7 +449,6 @@ if (!isset($_SESSION['akun'])) {
                                 </div>
                             </div>
                         <?php endforeach; ?>
-
                     </div>
                 </div>
             </div>

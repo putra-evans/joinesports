@@ -155,7 +155,7 @@
                         $now = date('Y-m-d');
                         // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
                         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
-                        $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_status='selesai' AND tournament_jenis='pb' ORDER BY tournament_tglmulai ASC LIMIT 2");
+                        $ambil = $koneksi->query("SELECT * FROM tb_tournament LEFT JOIN tb_achievement on tb_tournament.tournament_id=tb_achievement.achievement_idtournament where tournament_status='selesai' AND tournament_jenis='pb' ORDER BY tournament_tglmulai ASC LIMIT 4");
                         while ($satu = $ambil->fetch_object()) {
                             if (($satu->tournament_status == 'selesai') && ($satu->tournament_id == $satu->achievement_idtournament)) { ?>
                                 <a href="<?php echo site_url('pb/detailtournament/' . $satu->tournament_id) ?>">

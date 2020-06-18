@@ -33,32 +33,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="card-body">
                         <div class="tab-pane active" id="horizontal-form">
                             <form class="form-horizontal" action="<?php echo site_url('admin/bagan/add') ?>" method="post">
-
                                 <div class="form-group">
-                                    <label for="player_alamat" class="col-sm-2 control-label">Tournament</label>
-
+                                    <label class="col-sm-2 control-label">Game</label>
                                     <div class="col-sm-9">
-                                        <select name="bagan_tournamentid" id="bagan_tournament" class="form-control1">
-                                            <option value="">-PILIH TOURNAMENT-</option>
-                                            <?php foreach ($tournament as $data) : ?>
-                                                <option value="<?= $data->tournament_id ?>"><?= $data->tournament_nama ?></option>
-                                            <?php endforeach ?>
+                                        <select name="bagan_game" id="bagan_game" class="form-control1">
+                                            <option value="">-PILIH GAME-</option>
+                                            <option value="pb">POINT BLANK</option>
+                                            <option value="ml">MOBILE LEGENDS</option>
+                                            <option value="pubgmobile">PUBG MOBILE</option>
+                                            <option value="pubg">PUBG</option>
+                                            <option value="dota">DOTA</option>
+                                            <option value="ff">FREE FIRE</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="player_alamat" class="col-sm-2 control-label">Tournament</label>
+                                    <div class="col-sm-9">
+                                        <select name="bagan_tournamentid" id="bagan_tournament" class="form-control1">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-2 control-label">Tim A</label>
-
                                     <div class="col-sm-9">
                                         <select id="teamAll" name="bagan_tima" class="form-control1"></select>
                                     </div>
-
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-2 control-label">Tim B</label>
-
                                     <div class="col-sm-9">
                                         <select id="teamAll2" name="bagan_timb" class="form-control1"></select>
                                     </div>
-
                                 </div>
-
                                 <div class="form-group">
                                     <label for="bagan_waktu" class="col-sm-2 control-label">Tanggal Pertandingan</label>
                                     <div class="col-sm-9">
@@ -121,6 +128,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <script>
         $('document').ready(function() {
+            $('#bagan_game').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?= base_url('admin/Bagan/ApiGame') ?>",
+                    type: 'POST',
+                    data: {
+                        'pb': id
+                    },
+                    success: function(data) {
+                        $('#bagan_tournament').html(data);
+                    }
+                })
+            })
             $('#bagan_tournament').change(function() {
                 var id = $(this).val();
                 $.ajax({

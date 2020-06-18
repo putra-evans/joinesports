@@ -38,30 +38,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="card-body">
                         <div class="tab-pane active" id="horizontal-form">
                             <form class="form-horizontal" action="<?php echo site_url('admin/achievement/add') ?>" method="post" enctype="multipart/form-data">
-
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Tournament</label>
-
+                                    <label class="col-sm-2 control-label">Game</label>
                                     <div class="col-sm-9">
-                                        <select name="achievement_idtournament" id="achievement_idtournament" class="form-control1">
-                                            <option value="">-PILIH TOURNAMENT-</option>
-                                            <?php foreach ($tournament as $data) : ?>
-                                                <option value="<?= $data->tournament_id ?>"><?= $data->tournament_nama ?></option>
-                                            <?php endforeach ?>
+                                        <select name="achievement_game" id="achievement_game" class="form-control1">
+                                            <option value="">-PILIH GAME-</option>
+                                            <option value="pb">POINT BLANK</option>
+                                            <option value="ml">MOBILE LEGENDS</option>
+                                            <option value="pubgmobile">PUBG MOBILE</option>
+                                            <option value="pubg">PUBG</option>
+                                            <option value="dota">DOTA</option>
+                                            <option value="ff">FREE FIRE</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Tournament</label>
+                                    <div class="col-sm-9">
+                                        <select name="achievement_idtournament" id="achievement_idtournament" class="form-control1">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-2 control-label">Tim</label>
-
                                     <div class="col-sm-9">
                                         <select id="teamAll" name="achievement_idtim" class="form-control1"></select>
                                     </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="player_alamat" class="col-sm-2 control-label">Player</label>
-
-                                    <div class="col-sm-9" style="margin-left: 178px">
+                                    <div class="col-sm-9">
                                         <select name="achievement_idplayer" id="achievement_idplayer" class="form-control1">
                                             <option value="">-PILIH PLAYER-</option>
                                         </select>
-
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -92,6 +101,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <script>
         $('document').ready(function() {
+            $('#achievement_game').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?= base_url('admin/Achievement/ApiGame') ?>",
+                    type: 'POST',
+                    data: {
+                        'pb': id
+                    },
+                    success: function(data) {
+                        $('#achievement_idtournament').html(data);
+                    }
+                })
+            })
+
             $('#achievement_idtournament').change(function() {
                 var id = $(this).val();
                 $.ajax({

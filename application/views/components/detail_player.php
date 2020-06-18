@@ -181,11 +181,14 @@ if ($players->posisi_timid != '') { ?>
             <h6>ACHIEVEMENTS</h6>
             <?php
             // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+            $id = $this->uri->segment(3);
             $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
-            $aciev = $koneksi->query("SELECT * FROM tb_achievement where achievement_idtim=$players->posisi_timid");
+            $cekTim = $koneksi->query("SELECT * FROM `tb_posisi` WHERE posisi_playerid='$id'")->fetch_assoc();
+            $aciev = $koneksi->query("SELECT * FROM tb_achievement where achievement_idtim='$cekTim[posisi_timid]'");
             while ($pecah1 = $aciev->fetch_object()) {
                 if ($pecah1->achievement_idtim == $players->posisi_timid) {
-                    $ambil = $koneksi->query("SELECT * FROM tb_player LEFT JOIN tb_posisi ON tb_player.player_id = tb_posisi.posisi_playerid LEFT JOIN tb_tim ON tb_tim.tim_id= tb_posisi.posisi_timid LEFT JOIN tb_achievement ON tb_tim.tim_id=tb_achievement.achievement_idtim LEFT JOIN tb_tournament ON tb_achievement.achievement_idtournament=tb_tournament.tournament_id where tb_achievement.achievement_idtim=$players->posisi_timid AND player_id='$players->player_id'");
+                    $ambil = $koneksi->query("SELECT * FROM tb_player LEFT JOIN tb_posisi ON tb_player.player_id = tb_posisi.posisi_playerid LEFT JOIN tb_tim ON tb_tim.tim_id= tb_posisi.posisi_timid LEFT JOIN tb_achievement ON tb_tim.tim_id=tb_achievement.achievement_idtim LEFT JOIN tb_tournament ON tb_achievement.achievement_idtournament=tb_tournament.tournament_id where tb_achievement.achievement_idtim=$players->posisi_timid AND tb_player.player_id='$players->player_id'");
+                    
                     while ($pecah = $ambil->fetch_object()) {
                         $no = 1;
             ?>

@@ -90,13 +90,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <?php endforeach ?>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="registrasi_alamat" class="col-sm-2 control-label">Provinsi</label>
-
                                     <div class="col-sm-9">
                                         <select name="combo_provinsi" id="combo_provinsi" class="form-control1">
                                             <option value="">-PILIH PROVINSI-</option>
                                         </select>
                                     </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="registrasi_alamat" class="col-sm-2 control-label">Kota</label>
 
                                     <div class="col-sm-9">
@@ -105,6 +109,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         </select>
 
                                     </div>
+
                                 </div>
                                 <div class="form-group">
                                     <label for="registrasi_fb" class="col-sm-2 control-label">Facebook</label>

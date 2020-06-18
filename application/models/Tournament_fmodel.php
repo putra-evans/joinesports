@@ -87,7 +87,7 @@ class Tournament_fmodel extends CI_Model
     {
         return $this->db->get($this->_table)->result();
     }
-    public function getById($id) 
+    public function getById($id)
     {
         return $this->db->get_where($this->_table, ["tournament_id" => $id])->row();
     }
@@ -98,6 +98,11 @@ class Tournament_fmodel extends CI_Model
     public function getBagan($id)
     {
         return $this->db->get_where($this->_bagan, ["bagan_tournamentid" => $id])->result();
+    }
+    public function getBagan1($id)
+    {
+        return $this->db->query("SELECT * FROM tb_bagan, tb_tim WHERE tb_bagan.bagan_menang=tb_tim.tim_id AND bagan_tournamentid = '$id' AND bagan_babak ='final'")->result();
+        // return $this->db->get_where($this->_bagan, ["bagan_tournamentid" => $id, "bagan_babak => 'final'"])->result();
     }
     public function getAllBagan()
     {

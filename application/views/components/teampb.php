@@ -60,7 +60,7 @@ if (!isset($_SESSION['akun'])) {
                         <option value="1" onclick="myFunction()">A-Z</option>
                         <option value="2" onclick="myFunction()">Z-A</option>
                     </select>
-                </div>
+                </div> 
                 <div id="awal" class="container">
                     <?php
                     echo " <div class='container'>

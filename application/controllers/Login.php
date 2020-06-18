@@ -22,12 +22,15 @@ class Login extends CI_Controller
             'registrasi_password' => md5($password)
         );
         $cek = $this->m_login->cek_login("tb_registrasi", $where)->num_rows();
+        $ambil_id = $this->db->query("SELECT registrasi_id as id FROM tb_registrasi WHERE registrasi_username='$username'")->row_array();
+        $ambiak_tim = $this->db->query("SELECT tim_id FROM tb_tim WHERE tim_registrasi='$ambil_id[id]'")->row_array();
         if ($cek == 1) {
             $data_session = array(
                 'nama' => $username,
-                'status' => "login"
+                'status' => "login",
             );
             $_SESSION['akun'] = $data_session;
+            $_SESSION['idT'] = $ambiak_tim['tim_id'];
             $insert = $this->m_login;
             $data = $this->m_login->idregis($username);
             $_SESSION['id'] = $data;
@@ -41,7 +44,6 @@ class Login extends CI_Controller
             } else {
                 $insert->tambah();
             }
-
             $this->session->set_userdata($data_session);
 
             redirect(base_url());

@@ -33,7 +33,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Tournament</label>
-
                                     <div class="col-sm-9">
                                         <select name="poin_tournament" id="poin_tournament" class="form-control1">
                                             <option value="">-PILIH TOURNAMENT-</option>
@@ -42,31 +41,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <?php endforeach ?>
                                         </select>
                                     </div>
-                                    <label class="col-sm-2 control-label">Tim</label>
+                                </div>
 
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Tim</label>
                                     <div class="col-sm-9">
                                         <select id="teamAll" name="poin_playertim" class="form-control1"></select>
                                     </div>
-                                    <label for="player_alamat" class="col-sm-2 control-label">Player</label>
+                                </div>
 
-                                    <div class="col-sm-9" style="margin-left: 178px">
+                                <div class="form-group">
+                                    <label for="player_alamat" class="col-sm-2 control-label">Player</label>
+                                    <div class="col-sm-9">
                                         <select name="poin_playernama" id="poin_playernama" class="form-control1">
                                             <option value="">-PILIH PLAYER-</option>
                                         </select>
-
                                     </div>
                                 </div>
-
-                                <!-- <div class="form-group">
-                                    <label for="poin_playernama" class="col-sm-2 control-label">Nama Player</label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control1 <?php echo form_error('poin_playernama') ? 'is-invalid' : '' ?>" type="text" name="poin_playernama" placeholder="Nama Player" />
-                                        <div class="invalid-feedback">
-                                        </div>
-                                        <?php echo form_error('poin_playernama') ?>
-                                    </div>
-                                </div> -->
-
                                 <div class="form-group">
                                     <label for="poin_jumlah" class="col-sm-2 control-label">Jumlah Poin</label>
                                     <div class="col-sm-9">
@@ -76,9 +67,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <?php echo form_error('poin_jumlah') ?>
                                     </div>
                                 </div>
-                                <div class="col-sm-8 col-sm-offset-2">
-                                    <button class="btn-info btn" type="submit" name="btn" value="Save">Simpan</button>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <button class="btn-info btn" type="submit" name="btn" value="Save">Simpan</button>
+                            </div>
                             </form>
                         </div>
                     </div>

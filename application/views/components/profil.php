@@ -111,6 +111,65 @@
                 </tbody>
             </table>
         </div>
+        <div class="card bg-black mb-5">
+            <div class="container p-4">
+                <h6>ACHIEVEMENTS</h6>
+                <?php
+                // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
+                $regis = $this->uri->segment(3);
+                $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
+                $ambilPlayer = $koneksi->query("SELECT player_id FROM tb_player WHERE player_registrasi = '$regis'")->fetch_assoc();
+                // var_dump($ambilPlayer);
+                $cekTim = $koneksi->query("SELECT * FROM `tb_posisi` WHERE posisi_playerid='$ambilPlayer[player_id]'")->fetch_assoc();
+                $aciev = $koneksi->query("SELECT * FROM tb_achievement where achievement_idtim='$cekTim[posisi_timid]'");
+                while ($pecah1 = $aciev->fetch_object()) {
+                    if ($pecah1->achievement_idtim == $cekTim['posisi_timid']) {
+                        $ambil = $koneksi->query("SELECT * FROM tb_player LEFT JOIN tb_posisi ON tb_player.player_id = tb_posisi.posisi_playerid LEFT JOIN tb_tim ON tb_tim.tim_id= tb_posisi.posisi_timid LEFT JOIN tb_achievement ON tb_tim.tim_id=tb_achievement.achievement_idtim LEFT JOIN tb_tournament ON tb_achievement.achievement_idtournament=tb_tournament.tournament_id where tb_achievement.achievement_idtim='$cekTim[posisi_timid]' AND tb_player.player_id='$ambilPlayer[player_id]'");
+                        while ($pecah = $ambil->fetch_object()) {
+                            $no = 1;
+                            ?>
+                            <div class="card achievements p-2 mt-2">
+                                <div class="row">
+                                    <div class="col-lg-6 d-flex flex-row justify-content-around align-items-center">
+                                        <div>
+                                            <img src="<?php echo base_url('upload/tim/' . $pecah->tim_image) ?>" alt="" height="50vw">
+                                        </div>
+                                        <div>
+                                            <small class="text-secondary">event</small>
+                                            <h6><?php echo $pecah->tournament_nama ?></h6>
+                                        </div>
+                                        <div>
+                                            <small class="text-secondary">date</small>
+                                            <h6><?php echo $pecah->tournament_tglmulai ?></h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 d-flex flex-row justify-content-around align-items-center">
+                                        <div>
+                                            <small class="text-secondary">team</small>
+                                            <h6><?php echo $pecah->tim_nama ?></h6>
+                                        </div>
+                                        <div>
+                                            <small class="text-secondary">prize</small>
+                                            <h6>IDR. <?php echo $pecah->tournament_prize ?></h6>
+                                        </div>
+                                        <div style="background: #e0b403;border-radius: 10px; height: 100%; width: 100px;padding: 0px">
+                                            <h6 style="color:#000000;text-align: center;margin-top: 15px"><?php echo $pecah->achievement_peringkat ?> </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                <?php }
+                    } else {
+                        $kosong = 'Tidak Ada';
+                    }
+                }
+                if ($no != 1) {
+                    echo 'Tidak Ada achivement';
+                }
+                ?>
+
+            </div>
+        </div>
     </div>
 
 </div>

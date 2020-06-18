@@ -130,6 +130,7 @@ class Pb extends CI_Controller
         $data["bagan"] = $tournament->getBagan($id);
         $data["bagans"] = $tournament->getBagan($id);
         $data["bagansa"] = $tournament->getBagan($id);
+        $data["bagansa1"] = $tournament->getBagan1($id);
 
         if (!$data["tournament"]) show_404();
         $this->template->load('vhome', 'components/detail_tournament', $data);
@@ -152,19 +153,31 @@ class Pb extends CI_Controller
         $ambil2 = $koneksi->query("SELECT COUNT(*) AS jumlah FROM tb_posisi LEFT JOIN tb_tim ON tb_posisi.posisi_timid=tb_tim.tim_id where tb_tim.tim_id='$tim'");
         $total = mysqli_fetch_array($ambil2);
         $anggota = $total['jumlah'];
-        if ($anggota >= 4) {
-            $koneksi->query("INSERT INTO tb_daftartournament (tournamentid, daftartournament_idtim, daftartournament_idplayer) VALUES ('$id','$tim','$player')");
-            echo (" <script>
-        alert('anda telah bergabung');
-        window.location='../detailtournament/$id';
-      </script>");
+        $cekTim = $this->db->query("SELECT COUNT(daftartournament_idtim) as hasil FROM tb_daftartournament WHERE daftartournament_idtim='$tim' AND tournamentid='$id'")->row_array();
+        // var_dump($cekTim['hasil']);
+        // exit;
+        if ($cekTim['hasil'] == 0) {
+            if ($anggota >= 4) {
+                $koneksi->query("INSERT INTO tb_daftartournament (tournamentid, daftartournament_idtim, daftartournament_idplayer) VALUES ('$id','$tim','$player')");
+                echo (" <script>
+           alert('anda telah bergabung');
+           window.location='../detailtournament/$id';
+         </script>");
+            } else {
+                echo (" <script>
+               alert('Belum Memenuhi Syarat');
+   
+           window.location='../detailtournament/$id';
+   
+         </script>");
+            }
         } else {
             echo (" <script>
-            alert('Belum Memenuhi Syarat');
-
-        window.location='../detailtournament/$id';
-
-      </script>");
+               alert('Tim Sudah Terdaftar');
+   
+           window.location='../detailtournament/$id';
+   
+         </script>");
         }
     }
     public function request($id)
@@ -302,5 +315,16 @@ class Pb extends CI_Controller
             <option value='" . $a->kota_nama . "'>" . $a->kota_nama . "</option>
         ";
         }
+    }
+
+    public function keluarGrub($id)
+    {
+        $this->db->where('daftartournament_id', $id)->delete('tb_daftartournament');
+        echo (" <script>
+               alert('Anda Telah Keluar');
+   
+           window.location='../detailtournament/$id';
+   
+         </script>");
     }
 }
