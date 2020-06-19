@@ -73,6 +73,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         </select>
                                     </div>
                                 </div>
+
+
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-9" id="achievement_idplayer2">
+                                    </div>
+                                </div>
+
+
+
+
                                 <div class="form-group">
                                     <label for="achievement_peringkat" class="col-sm-2 control-label">peringkat</label>
                                     <div class="col-sm-9">
@@ -141,6 +153,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     success: function(data) {
                         console.log(id);
                         $('#achievement_idplayer').html(data);
+                    }
+                })
+            })
+            $('#teamAll').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    url: "<?= base_url('admin/Achievement/ApiPlayer2') ?>",
+                    type: 'POST',
+                    data: {
+                        'player_id': id
+                    },
+                    datatype: 'JSON',
+                    success: function(data) {
+                        console.log(id);
+                        $('#achievement_idplayer2').html(data);
                     }
                 })
             })

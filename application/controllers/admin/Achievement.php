@@ -99,4 +99,15 @@ class Achievement extends CI_Controller
             ";
         }
     }
+    public function ApiPlayer2()
+    {
+        $id = $_POST['player_id'];
+        $data = $this->achievement_model->cariPlayer($id);
+        // echo "<option value=''>-PILIH PLAYER-</option>";
+        foreach ($data as $a) {
+            echo "
+            <input type='hidden' name='player[]' value=" . $a->player_id . "></input>
+            ";
+        }
+    }
 }
