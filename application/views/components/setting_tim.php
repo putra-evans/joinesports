@@ -76,7 +76,7 @@
                         <?php } else { ?>
                             <div class="text-lg-right">
 
-                                <a onclick="keluarConfirm('<?php echo base_url('overview/keluar/' .  $tim->posisi_id) ?>')" href="#!" data-toggle="modal" data-target="#keluarModal" class="btn btn-primary btn-block" style="padding: 10px">Keluar</a>
+                                <a onclick="keluarConfirm('<?php echo base_url('overview/keluar/' .  $tim->posisi_id) ?>')" href="#!" data-toggle="modal" data-target="#keluarModal" class="btn btn-primary btn-block" style="padding: 10px">keluar</a>
                             </div>
 
                         <?php    } ?>

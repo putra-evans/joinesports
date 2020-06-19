@@ -46,10 +46,8 @@ class Login extends CI_Controller
 
     function logout()
     {
-
         $params = array('nama', 'status');
         $this->session->unset_userdata($params);
-        // session_destroy();
-        redirect('login');
+        redirect('overview/');
     }
 }

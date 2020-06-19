@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jun 2020 pada 12.14
--- Versi server: 10.1.31-MariaDB
--- Versi PHP: 7.1.15
+-- Waktu pembuatan: 19 Jun 2020 pada 05.58
+-- Versi server: 10.4.10-MariaDB
+-- Versi PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,7 +41,8 @@ CREATE TABLE `tb_achievement` (
 --
 
 INSERT INTO `tb_achievement` (`achievement_id`, `achievement_idtournament`, `achievement_idtim`, `achievement_idplayer`, `achievement_peringkat`) VALUES
-(1, '8994', '77', 'pb_rahma ', '2');
+(1, '8991', '1', '0001', '1'),
+(2, '8995', '2', '01', '1');
 
 -- --------------------------------------------------------
 
@@ -67,9 +68,9 @@ CREATE TABLE `tb_bagan` (
 --
 
 INSERT INTO `tb_bagan` (`bagan_id`, `bagan_tournamentid`, `bagan_tima`, `bagan_timb`, `bagan_waktu`, `bagan_scorea`, `bagan_scoreb`, `bagan_babak`, `bagan_menang`, `bagan_keterangan`) VALUES
-(7, '8991', '77', '78', '2020-04-13 11:49:50', '12', '2', 'semi final', '77', '12'),
-(9, '8991', '79', '80', '2020-04-13 11:49:50', '20', '11', 'semi final', '79', 'asu'),
-(16, '8991', '77', '79', '2020-12-12 09:08', '20', '10', 'final', '77', 'SELESAI');
+(17, '8995', '1', '2', '2020-06-16 13:00', '10', '20', 'semi final', '2', 'Ganas'),
+(18, '8995', '3', '4', '2020-06-17 13:00', '10', '20', 'semi final', '4', 'Terbaik'),
+(19, '8995', '2', '4', '2020-06-18 13:00', '30', '25', 'final', '2', 'Jangan Terlewatkan');
 
 -- --------------------------------------------------------
 
@@ -151,15 +152,10 @@ CREATE TABLE `tb_daftartournament` (
 --
 
 INSERT INTO `tb_daftartournament` (`daftartournament_id`, `tournamentid`, `daftartournament_idtim`, `daftartournament_idplayer`) VALUES
-(8, '8991', '77', 'qwerty   '),
-(9, '8991', '78', 'qwerty   '),
-(10, '8991', '79', 'qwerty   '),
-(11, '8991', '80', 'qwerty   '),
-(12, '8992', '81', 'a'),
-(13, '8992', '82', 'a'),
-(14, '8992', '83', 'a'),
-(15, '8992', '84', 'a'),
-(16, '8995', '86', '80112222');
+(37, '8995', '1', '0001'),
+(38, '8995', '2', '01'),
+(39, '8995', '4', '21'),
+(40, '8995', '3', '11');
 
 -- --------------------------------------------------------
 
@@ -197,7 +193,10 @@ INSERT INTO `tb_klaim` (`klaim_id`, `klaim_poin`, `klaim_tgl`, `klaim_registrasi
 (19, 42, '2020-06-12', '61'),
 (20, 25, '2020-06-12', '62'),
 (21, 40, '2020-06-12', '63'),
-(22, 46, '2020-06-12', '51');
+(22, 46, '2020-06-12', '51'),
+(23, 33, '2020-06-15', '51'),
+(24, 20, '2020-06-16', '51'),
+(25, 37, '2020-06-17', '66');
 
 -- --------------------------------------------------------
 
@@ -223,11 +222,11 @@ INSERT INTO `tb_koin` (`koin_id`, `register_id`, `koin_tgl`, `koin_total`) VALUE
 (48, 47, '2020-04-06', 1),
 (49, 48, '2020-04-06', 1),
 (50, 50, '2020-04-11', 1),
-(51, 51, '2020-06-12', 7),
+(51, 51, '2020-06-18', 11),
 (52, 54, '2020-04-14', 2),
 (53, 53, '2020-04-17', 4),
 (54, 52, '2020-04-16', 2),
-(55, 56, '2020-04-17', 3),
+(55, 56, '2020-06-17', 4),
 (56, 57, '2020-06-12', 2),
 (57, 59, '2020-06-12', 1),
 (58, 60, '2020-06-12', 1),
@@ -236,7 +235,22 @@ INSERT INTO `tb_koin` (`koin_id`, `register_id`, `koin_tgl`, `koin_total`) VALUE
 (61, 63, '2020-06-12', 1),
 (62, 64, '2020-06-12', 1),
 (63, 65, '2020-06-12', 1),
-(64, 66, '2020-06-12', 1);
+(64, 66, '2020-06-18', 4),
+(65, 67, '2020-06-15', 1),
+(66, 68, '2020-06-18', 1),
+(67, 69, '2020-06-18', 1),
+(68, 70, '2020-06-19', 2),
+(69, 71, '2020-06-19', 2),
+(70, 72, '2020-06-18', 1),
+(71, 73, '2020-06-18', 1),
+(72, 74, '2020-06-18', 1),
+(73, 75, '2020-06-18', 1),
+(74, 76, '2020-06-18', 1),
+(75, 77, '2020-06-18', 1),
+(76, 78, '2020-06-18', 1),
+(77, 79, '2020-06-18', 1),
+(78, 80, '2020-06-18', 1),
+(79, 81, '2020-06-18', 1);
 
 -- --------------------------------------------------------
 
@@ -250,7 +264,7 @@ CREATE TABLE `tb_komentar` (
   `komentar_status` int(11) NOT NULL,
   `komentar_nama` varchar(255) NOT NULL,
   `komentar_isi` text NOT NULL,
-  `komentar_waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `komentar_waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -405,29 +419,22 @@ CREATE TABLE `tb_player` (
 --
 
 INSERT INTO `tb_player` (`player_id`, `player_nickname`, `player_tglmasuk`, `player_jenis`, `player_registrasi`, `player_cek`) VALUES
-('001', 'agung', '2020-06-11', 'ml', 57, 'no'),
-('0122', 'RestFullGemsHard1st', '2020-06-12', 'pb', 60, 'no'),
-('43333', 'CallMe-Rens23', '2020-06-12', 'pb', 64, 'no'),
-('454545', 'ScremOUS(syahrul-lai-lai)75tH', '2020-06-12', 'pb', 63, 'no'),
-('5665565', 'GaduikNanggalo', '2020-06-12', 'pb', 66, 'no'),
-('80112222', 'kenjinagaro', '2020-06-12', 'pb', 59, 'no'),
-('876', 'PutraInTech27', '2020-06-12', 'pb', 61, 'no'),
-('9843', 'BobonTa1St', '2020-06-12', 'pb', 65, 'no'),
-('98788', 'Abyan1sTRetakDada', '2020-06-12', 'pb', 62, 'no'),
-('laylaml', 'laylaml', '2020-04-14', 'ml', 53, 'no'),
-('ml_aysha', 'mlaysha', '2020-04-12', 'ml', 54, 'no'),
-('ml_fanny', 'mlfanny', '2020-04-12', 'ml', 52, 'no'),
-('ml_intan', 'intan', '2020-04-12', 'ml', 51, 'yes'),
-('pb_aysha', 'aysha', '2020-04-12', 'pb', 54, 'no'),
-('pb_fanny', 'fanny', '2020-04-12', 'pb', 52, 'yes'),
-('pb_intan', 'intanpb', '2020-04-12', 'pb', 51, 'no'),
-('pb_layla', 'layla', '2020-04-12', 'pb', 53, 'no'),
-('pb_rahma ', 'rahma_pb ', '2020-04-17', 'pb', 53, 'no'),
-('pubgm_fanny  ', 'pubgm_fanny  ', '2020-04-17', 'pubg', 51, 'yes'),
-('pubgm_intan', 'pubgm_intan', '2020-04-15', 'pubgm', 51, 'no'),
-('pubgm_layla', 'pubgm_layla', '2020-04-16', 'pubgm', 53, 'no'),
-('pubgm_rahma', 'pubgm_rahma', '2020-04-16', 'pubgm', 56, 'no'),
-('qwerty   ', 'qwerty   ', '2020-04-11', 'pb', 49, 'no');
+('0001', 'intan', '2020-06-17', 'pb', 51, 'no'),
+('0002', 'gaduik', '2020-06-17', 'pb', 66, 'no'),
+('0003', 'budi', '2020-06-18', 'pb', 68, 'no'),
+('0004', 'bodo', '2020-06-18', 'pb', 69, 'no'),
+('01', 'putra1', '2020-06-18', 'pb', 70, 'no'),
+('02', 'putra2', '2020-06-18', 'pb', 71, 'no'),
+('03', 'putra3', '2020-06-18', 'pb', 72, 'no'),
+('04', 'putra4', '2020-06-18', 'pb', 73, 'no'),
+('11', 'put1', '2020-06-18', 'pb', 74, 'no'),
+('12', 'put2', '2020-06-18', 'pb', 75, 'no'),
+('13', 'put3', '2020-06-18', 'pb', 76, 'no'),
+('14', 'put4', '2020-06-18', 'pb', 77, 'no'),
+('21', 'evans1', '2020-06-18', 'pb', 78, 'no'),
+('22', 'evans2', '2020-06-18', 'pb', 79, 'no'),
+('23', 'evans3', '2020-06-18', 'pb', 80, 'no'),
+('24', 'evans4', '2020-06-18', 'pb', 81, 'no');
 
 -- --------------------------------------------------------
 
@@ -442,14 +449,6 @@ CREATE TABLE `tb_poin` (
   `poin_playernama` varchar(255) NOT NULL,
   `poin_jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_poin`
---
-
-INSERT INTO `tb_poin` (`poin_id`, `poin_tournament`, `poin_playertim`, `poin_playernama`, `poin_jumlah`) VALUES
-(2, '8991', '77', 'pb_intan', 12),
-(3, '8992', '81', 'pubgm_rahma', 90);
 
 -- --------------------------------------------------------
 
@@ -469,28 +468,22 @@ CREATE TABLE `tb_posisi` (
 --
 
 INSERT INTO `tb_posisi` (`posisi_id`, `posisi_timid`, `posisi_playerid`, `posisi_nama`) VALUES
-(39, '77', 'pb_intan', 'Leader'),
-(40, '78', 'pb_aysha', 'Leader'),
-(41, '79', 'pb_layla', 'Leader'),
-(42, '80', 'pb_fanny', 'Leader'),
-(43, '85', 'ml_intan', 'Leader'),
-(44, '85', 'ml_aysha', 'mid'),
-(45, '85', 'ml_fanny', 'center'),
-(46, '85', 'laylaml', 'none'),
-(47, '77', 'pb_rahma', 'nub'),
-(48, '81', 'pubgm_intan', 'Leader'),
-(49, '81', 'pubgm_fanny', 'center'),
-(50, '81', 'pubgm_layla', ''),
-(51, '81', 'pubgm_rahma', 'lala'),
-(52, '', '001', ''),
-(53, '86', '80112222', 'Leader'),
-(54, '86', '0122', 'anchor'),
-(55, '86', '876', 'Flank'),
-(56, '86', '98788', 'Penjaga Sc'),
-(57, '86', '454545', 'Khusus Penjaga A batu'),
-(58, '77', '43333', 'defender'),
-(59, '77', '9843', 'forward'),
-(60, '77', '5665565', 'Flank');
+(62, '1', '0001', 'Leader'),
+(63, '1', '0002', 'belakang'),
+(64, '1', '0003', 'kiri'),
+(65, '1', '0004', 'depan'),
+(66, '2', '01', 'Leader'),
+(67, '2', '02', 'depan'),
+(68, '2', '03', 'belakang'),
+(69, '2', '04', 'Kiri'),
+(70, '3', '11', 'Leader'),
+(71, '3', '12', 'depan'),
+(72, '3', '13', 'belakang'),
+(73, '3', '14', 'kiri'),
+(74, '4', '21', 'Leader'),
+(75, '4', '22', 'backend'),
+(76, '4', '23', 'depan'),
+(77, '4', '24', 'depan');
 
 -- --------------------------------------------------------
 
@@ -593,19 +586,21 @@ CREATE TABLE `tb_registrasi` (
 
 INSERT INTO `tb_registrasi` (`registrasi_id`, `registrasi_nama`, `registrasi_nohp`, `registrasi_email`, `registrasi_username`, `registrasi_password`, `registrasi_tgllahir`, `registrasi_alamat`, `registrasi_fb`, `registrasi_yt`, `registrasi_ig`, `registrasi_image`) VALUES
 (51, 'intan', '098765434', 'intan@gmail.com', 'intan', 'b1098cab9c2db3eb9f576eb66c33449c', '1999-03-11', 'Banda Aceh', '', '', '', '2.jpg'),
-(52, 'fanny laura', '123456786', 'F@gmail.com', 'fanny', 'a871ee4d62a421976031c9145c705bdd', '1996-03-11', 'Lhokseumawe', '', '', '', 'default.jpg'),
-(53, 'layla', '0809809', 'tik@gmail.com', 'layla', 'c08a6ee5d602cd7916c8b7d3cef8af98', '1988-03-11', 'Padang', '', '', '', 'default.jpg'),
-(54, 'aysha alifa', '0809809', 'intan@gmail.com', 'aysha', '8926b966e1e87842156770a93f329418', '1999-03-09', 'Pangkal', 'intan', '', '', '54.png'),
-(55, 'mia', '09384', 'mi@gmail.com', 'mia', '5102ecd3d47f6561de70979017b87a80', '1998-03-12', 'Banda', '', '', '', 'default.jpg'),
-(56, 'rahma wati', '0809809', 'intan@gmail.com', 'rahma', 'b007b7d6520a7b3dcccd2a1ec2891009', '2003-02-13', 'Tarakan', '', '', '', '3.jpg'),
-(59, 'agung', '0823131312', 'agunglaksmana908@gmail.com', 'agung', 'e59cd3ce33a68f536c19fedb82a7936f', '1996-04-27', 'Padang', 'agunglaksmana', 'agunglaksmana', '@agunglaksmana908', '4.jpg'),
-(60, 'Gema Faja Ramadhan', '082124212', 'gema@gmail.com', 'gema', 'bf012e2220ad9dbb07740f2519057746', '1996-02-01', 'Pariaman', 'gema', 'gema', 'gema', '2.jpeg'),
-(61, 'Putra Evans Pratama', '2324321', 'putra@gmail.com', 'putraevans', '8805cfef78e5dc2e3487883a196d1f28', '1995-04-02', 'Solok', 'putra', 'putra', '@putra', '5.jpg'),
-(62, 'abyan adam', '05343223432', 'abyan@gmail.com', 'abyan', '94e7f0d8fe892e71ae68cae1572b1bda', '1996-07-01', 'Bukittinggi', 'abyan', 'abyan', 'abyan', '3.jpeg'),
-(63, 'syahrul', '1243', 'syahrul@gmail.com', 'syahrul', '95ffb7a15f02c6c23f403edeae956a42', '2000-02-01', 'Padang Panjang', 'syahrul-lai-lai', 'syahrul-lai-lai', '@syahrul-lai-lai', '6.jpg'),
-(64, 'randy abg', '123212', 'randy@gmail.com', 'randy', '163218e536c13ff2fc9a4d76e34be085', '1994-02-01', 'Padang', 'randy', 'randy', '@randy', '7.jpg'),
-(65, 'ervin bobon', '092232', 'bobon@gmail.com', 'bobon', '303c29880b283c636c31633cb41490b5', '1996-09-23', 'Padang Panjang', 'bobon', 'bobon', '@bobon', 'default.jpg'),
-(66, 'gaduik', '3343323232', 'gaduik@gmail.com', 'gaduik', 'c25b1fc593c8ed1974bd45810031b883', '1995-09-23', 'Padang', 'gaduik', 'gaduik', '@gaduik', 'default.jpg');
+(66, 'gaduik', '3343323232', 'gaduik@gmail.com', 'gaduik', 'c25b1fc593c8ed1974bd45810031b883', '1995-09-23', 'Padang', 'gaduik', 'gaduik', '@gaduik', 'default.jpg'),
+(68, 'Nulla ipsum ad moll', 'Ex non quasi pariatu', 'rumyga@mailinator.com', 'budi', '00dfc53ee86af02e742515cdcf075ed3', '1979-05-02', 'Tual', 'Rerum maiores qui id', 'Voluptatem Ex sequi', 'Eveniet voluptas ea', 'default.jpg'),
+(69, 'bodo', 'Consequatur quo eni', 'povyxuhy@mailinator.com', 'bodo', '0032a598e52fc6f3eb3dd7b886490570', '1997-12-04', 'Padang', 'Duis facere consecte', 'Eligendi tenetur lau', 'Et ut voluptates nih', 'default.jpg'),
+(70, 'putra1', 'Ullamco provident n', 'hilav@mailinator.com', 'putra1', 'ecc66e7dfb4e7b72bc10f1f6685a5414', '1980-08-10', 'Jayapura', 'Culpa incidunt mag', 'Veritatis unde ratio', 'Nemo commodi officii', 'default.jpg'),
+(71, 'putra2', 'Est fugiat obcaecat', 'bepe@mailinator.com', 'putra2', '3a6052db135e03cd9b3baf14f8331467', '1999-11-23', 'Jambi', 'Eum ut doloremque vo', 'Ut aliquid dolore te', 'Quia nihil nulla mol', 'default.jpg'),
+(72, 'putra3', 'Illum reiciendis co', 'sizex@mailinator.com', 'putra3', 'e1a2c7585f0e7ae4cf8b7ab1b4d49d95', '1994-07-15', 'Gorontalo', 'Eligendi id voluptat', 'Commodo cum quas qui', 'Ut sit debitis vel ', 'default.jpg'),
+(73, 'putra4', 'Blanditiis eum omnis', 'byrotag@mailinator.com', 'putra4', 'e1691d7d7db5c532d61995bcbe62e8f2', '1988-02-15', 'Denpasar', 'Nemo eu et ab ipsum', 'Alias eum ratione ut', 'Illum consequatur ', 'default.jpg'),
+(74, 'put1', 'Sunt fugiat ut qua', 'fadu@mailinator.com', 'put1', '5c8bdd8df0d81369e8e23d7a52fa6e79', '2000-01-05', 'Palopo', 'Sunt dolore ea qui ', 'Necessitatibus quia ', 'Dolores minim autem ', 'default.jpg'),
+(75, 'put2', 'Vero earum pariatur', 'baguxojom@mailinator.com', 'put2', '6e367c0b257b6c0294f3a4a899406b06', '1972-09-14', 'Padang', 'Non in totam est dol', 'Aut sed qui culpa q', 'Ut veritatis eveniet', 'default.jpg'),
+(76, 'put3', 'Esse laboriosam bea', 'zuwop@mailinator.com', 'put3', 'ba1a1d567d1dd1b3f99e08e1c16ec497', '2016-03-23', 'Padang', 'Vel reprehenderit ma', 'Nisi magni et ullam ', 'Exercitationem enim ', 'default.jpg'),
+(77, 'put4', 'Illo sunt id assume', 'pacosasaw@mailinator.com', 'put4', '2fa83ef8e2705316e7ca92fb5dbdd3a5', '2016-12-27', 'Makassar', 'Ut ut consequatur cu', 'Laboris aut aut eos ', 'Cupiditate cum recus', 'default.jpg'),
+(78, 'evans1', 'Lorem minim do molli', 'nypykubymu@mailinator.com', 'evans1', '6e414feec8efb2696f06385031095e2e', '2015-07-22', 'Banjarmasin', 'Sit in nisi sint et', 'Rerum qui reiciendis', 'Cupiditate fugit po', 'default.jpg'),
+(79, 'evans2', 'Odit reprehenderit c', 'vypidow@mailinator.com', 'evans2', 'b0854088ca5680aa7eaf7b7beb9456a8', '2008-05-17', 'Padang Sidempuan', 'Consectetur asperio', 'Nostrum dolores mini', 'Fuga Voluptatem Cu', 'default.jpg'),
+(80, 'evans3', 'Voluptatem Commodi ', 'gupor@mailinator.com', 'evans3', '30170c467f7d286296c7f46c987f9877', '1995-04-25', 'Bogor', 'Excepteur blanditiis', 'Enim quam pariatur ', 'Impedit excepteur n', 'default.jpg'),
+(81, 'evans4', 'Ut facilis dolore at', 'livywenewe@mailinator.com', 'evans4', 'aef2597bc240703616ba98f5f61e37f3', '1978-10-06', 'Balikpapan', 'Aliquam do culpa et', 'Perspiciatis volupt', 'Ut qui ea et illo re', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -684,16 +679,10 @@ CREATE TABLE `tb_tim` (
 --
 
 INSERT INTO `tb_tim` (`tim_id`, `tim_registrasi`, `tim_about`, `tim_nama`, `tim_lokasi`, `tim_jenis`, `tim_tahunmasuk`, `tim_fb`, `tim_yt`, `tim_ig`, `tim_image`, `tim_cek`) VALUES
-(77, '51', '<p>ini tim</p>\r\n', 'virtus.pro', 'Banda', 'pb', '2020-04-11', 'virtus', 'virtus', 'virtus', '771.png', 'yes'),
-(78, '54', '<p>PSG.LGD</p>\r\n', 'PSG.LGD', 'Tual', 'pb', '2020-04-11', 'PSG.LGD', 'PSG.LGD', 'PSG.LGD', '1.png', 'no'),
-(79, '53', '<p>Vici Gaming</p>\r\n', 'Vici Gaming', 'Banjarbaru', 'pb', '2020-04-11', 'Vici Gaming', 'Vici Gaming', 'Vici Gaming', '2.png', 'no'),
-(80, '52', '<p>TNC Predator</p>\r\n', 'TNC Predator', 'Sukabumi', 'pb', '2020-04-11', 'TNC Predator', 'TNC Predator', 'TNC Predator', '3.png', 'no'),
-(81, '51', '<p>N1</p>\r\n', 'N1', 'Binjai', 'pubgm', '2020-04-11', '', '', '', '4.png', 'yes'),
-(82, '', '<p>UoL</p>\r\n', 'UoL', 'Singkawang', 'pubgm', '2020-04-11', '', '', '', '5.png', 'no'),
-(83, '', '<p>NGG</p>\r\n', 'NGG', 'Tarakan', 'pubgm', '2020-04-11', '', '', '', '6.png', 'no'),
-(84, '', '<p>R1G</p>\r\n', 'R1G', 'Tidore', 'pubgm', '2020-04-11', '', '', '', '7.png', 'no'),
-(85, '51', '<p>ini tim</p>\r\n', 'ml lala', 'Langsa', 'ml', '2020-04-12', '', '', '', '8.PNG', 'yes'),
-(86, '59', '<p>OOCEEEEE</p>\r\n', 'Screamous Gaming', 'Padang', 'pb', '2020-06-12', 'Screamous Gaming', 'Screamous Gaming', 'Screamous Gaming', '12.png', 'no');
+(1, '51', '<p>tim baru ko mah</p>\r\n', 'coba1', 'Padang', 'pb', '2020-06-17', 'coba1', 'coba1', 'coba1', '13.png', 'no'),
+(2, '70', '<p>qwerty</p>\r\n', 'coba2', 'Padang', 'pb', '2020-06-18', 'coba2', 'coba2', 'coba2', 'images.jpg', 'no'),
+(3, '74', '<p>asd</p>\r\n', 'coba3', 'Padang', 'pb', '2020-06-18', 'coba3', 'coba3', 'coba3', '3.png', 'no'),
+(4, '78', '<p>zxc</p>\r\n', 'coba4', 'Padang', 'pb', '2020-06-18', 'coba4', 'coba4', 'coba4', '4.png', 'no');
 
 -- --------------------------------------------------------
 
@@ -729,8 +718,8 @@ INSERT INTO `tb_tournament` (`tournament_id`, `tournament_jenis`, `tournament_na
 (8991, 'pb', 'PB Pro Circuit', 'selesai', '2020-04-07', '2020-04-14', 18, 'squad', 'Medan', '1000000', '100', 'free', '<p>ini turnament</p>\r\n', 'Indonesia', 'double elimination', 'valve', '<p>asa</p>\r\n'),
 (8992, 'pubg', 'PUBG pro circuit', 'mulai', '2020-04-07', '2020-04-14', 100, 'squad', 'Padang', '1.000.000', '10000', 'free', '<p>ini turnament</p>\r\n', 'Indonesia', 'Single elimination', 'valve', '<p>qqq</p>\r\n'),
 (8993, 'ml', 'ML Pro Circuit', 'mulai', '2020-04-07', '2020-04-14', 18, 'squad', 'Medan', '1000000', '100', 'free', '<p>ini turnament</p>\r\n', 'Indonesia', 'double elimination', 'valve', '<p>mnsa</p>\r\n'),
-(8994, 'pb', 'pb test', 'mulai', '2020-04-17', '2020-04-24', 11, 'squad', 'Padang', '1000000', '100', 'free', '<p>qq</p>\r\n', 'indonesia', 'single', 'admin', '<p>aa</p>\r\n'),
-(8995, 'pb', 'Point Blank  R.Sumatera 1sT', 'segera', '2020-06-12', '2020-06-15', 32, 'squad', 'Padang', '200', '5000000', 'Mobil Mercedes Bens Ci-Native Ambrul', '<p>Silahkan Ramaikan Guys</p>\r\n', 'Sumatera 1st PBNC 12', 'Upper Bracket', 'Cyber Gaming', '<p>FULL CASH&nbsp;</p>\r\n');
+(8994, 'pb', 'pb test', 'selesai', '2020-04-17', '2020-04-24', 11, 'squad', 'Padang', '1000000', '100', 'free', '<p>qq</p>\r\n', 'indonesia', 'single', 'admin', '<p>aa</p>\r\n'),
+(8995, 'pb', 'Point Blank  R.Sumatera 1sT', 'mulai', '2020-06-12', '2020-06-15', 32, 'squad', 'Padang', '200', '5000000', 'Mobil Mercedes Bens Ci-Native Ambrul', '<p>Silahkan Ramaikan Guys</p>\r\n', 'Sumatera 1st PBNC 12', 'Upper Bracket', 'Cyber Gaming', '<p>FULL CASH&nbsp;</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -901,13 +890,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `tb_achievement`
 --
 ALTER TABLE `tb_achievement`
-  MODIFY `achievement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `achievement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bagan`
 --
 ALTER TABLE `tb_bagan`
-  MODIFY `bagan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `bagan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_berita`
@@ -931,19 +920,19 @@ ALTER TABLE `tb_daftartim`
 -- AUTO_INCREMENT untuk tabel `tb_daftartournament`
 --
 ALTER TABLE `tb_daftartournament`
-  MODIFY `daftartournament_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `daftartournament_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_klaim`
 --
 ALTER TABLE `tb_klaim`
-  MODIFY `klaim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `klaim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_koin`
 --
 ALTER TABLE `tb_koin`
-  MODIFY `koin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `koin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_komentar`
@@ -967,13 +956,13 @@ ALTER TABLE `tb_login`
 -- AUTO_INCREMENT untuk tabel `tb_poin`
 --
 ALTER TABLE `tb_poin`
-  MODIFY `poin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `poin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_posisi`
 --
 ALTER TABLE `tb_posisi`
-  MODIFY `posisi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `posisi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_provinsi`
@@ -991,13 +980,13 @@ ALTER TABLE `tb_pulau`
 -- AUTO_INCREMENT untuk tabel `tb_registrasi`
 --
 ALTER TABLE `tb_registrasi`
-  MODIFY `registrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `registrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_request`
 --
 ALTER TABLE `tb_request`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_reward`
@@ -1015,7 +1004,7 @@ ALTER TABLE `tb_sponsor`
 -- AUTO_INCREMENT untuk tabel `tb_tim`
 --
 ALTER TABLE `tb_tim`
-  MODIFY `tim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `tim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_tournament`

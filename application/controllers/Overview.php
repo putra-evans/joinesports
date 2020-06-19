@@ -142,6 +142,7 @@ class Overview extends CI_Controller
         $validation->set_rules($tim->rules());
         // $koneksi = mysqli_connect('localhost', 'joinesports_root', 'egova13081996', 'joinesports_database');
         $koneksi = mysqli_connect('localhost', 'root', '', 'db_join');
+        
         $koneksi->query("UPDATE tb_posisi SET posisi_nama='', posisi_timid='' WHERE posisi_id=$id");
         $regis = $_SESSION['id'];
         $idr = $regis->registrasi_id;
